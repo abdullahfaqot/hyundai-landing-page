@@ -1,0 +1,110 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Navbar />
+
+<section
+  class="min-h-screen px-6 py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-black text-white"
+>
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-6">
+      Syarat Kredit
+    </h1>
+
+    <p class="text-center text-slate-300 max-w-3xl mx-auto mb-16 leading-relaxed">
+      Kami menyediakan layanan pembelian Mobil Baru Hyundai, baik secara
+      <strong>Retail</strong>, <strong>Fleet Cash</strong>, <strong>Kredit</strong>,
+      maupun untuk kebutuhan <strong>Perusahaan</strong>.
+      Kami juga menerima <strong>tukar tambah</strong> mobil lama Anda dengan mobil baru Hyundai!
+    </p>
+
+    <!-- SYARAT -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <!-- PERUSAHAAN -->
+      <div
+        class="bg-white/95 text-slate-900 p-8 rounded-2xl shadow-xl"
+      >
+        <h3 class="font-bold text-2xl mb-5">
+          Syarat Pengajuan Kredit Perusahaan
+        </h3>
+        <ul class="space-y-3 list-disc list-inside text-slate-700">
+          <li>Fotocopy akte pendirian & perubahannya</li>
+          <li>Fotocopy pengesahan kehakiman</li>
+          <li>Fotocopy SIUP, NPWP, SITU / Domisili, TDP</li>
+          <li>Fotocopy Rekening Koran 3 bulan terakhir</li>
+          <li>Fotocopy KTP direksi & komisaris</li>
+        </ul>
+      </div>
+
+      <!-- PERORANGAN -->
+      <div
+        class="bg-white/95 text-slate-900 p-8 rounded-2xl shadow-xl"
+      >
+        <h3 class="font-bold text-2xl mb-5">
+          Syarat Pengajuan Kredit Perorangan
+        </h3>
+        <ul class="space-y-3 list-disc list-inside text-slate-700">
+          <li>Fotocopy KTP pemohon & suami / istri / penjamin</li>
+          <li>
+            Fotocopy Kartu Keluarga
+            <span class="text-sm text-slate-500">
+              (dapat digantikan dengan surat nikah atau akte kelahiran)
+            </span>
+          </li>
+          <li>Data lain (hanya jika diperlukan)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROSES KREDIT -->
+    <div
+      class="bg-white/95 text-slate-900 p-10 rounded-3xl shadow-2xl max-w-4xl mx-auto"
+    >
+      <h3 class="font-bold text-2xl mb-6 text-center">
+        Proses Pengajuan Kredit Mobil
+      </h3>
+
+      <ol class="space-y-4 list-decimal list-inside text-slate-700 leading-relaxed">
+        <li>
+          Anda menghubungi sales kami atau sales kami menghubungi Anda melalui nomor telepon yang Anda berikan.
+        </li>
+        <li>
+          Kami akan mengkonfirmasi mobil pilihan Anda, DP, dan angsuran yang Anda inginkan.
+        </li>
+        <li>
+          Kami akan mengkonfirmasi waktu dan tempat untuk pelaksanaan survey dari pihak leasing.
+        </li>
+        <li>
+          Surveyor kredit dari pihak leasing akan mendatangi Anda untuk proses survey.
+        </li>
+        <li>
+          Pada saat survey, Anda akan mengisi berkas kredit dan dapat menanyakan cara pembayaran angsuran.
+          <strong>Tidak ada pembayaran apapun saat survey.</strong>
+        </li>
+        <li>
+          Surveyor akan memberikan hasil survey dalam jangka waktu
+          <strong>1 sampai 2 hari</strong> setelah survey.
+        </li>
+        <!-- <li class="text-slate-600 text-sm">
+          *Apabila alamat tempat tinggal saat ini berbeda dengan alamat di KTP
+          (contoh: kontrak), maka survey akan dilakukan di alamat tempat tinggal Anda saat ini.
+        </li> -->
+      </ol>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-16">
+      <a
+        href="https://wa.me/6282142964242"
+        target="_blank"
+        class="inline-block bg-lime-400 text-black px-10 py-4 rounded-full font-semibold text-lg hover:bg-lime-500 transition"
+      >
+        Konsultasi Kredit Sekarang
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />

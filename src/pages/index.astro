@@ -1,11 +1,496 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import CarCard from "../components/CarCard.astro";
+import Footer from "../components/Footer.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const cars = [
+  {
+    name: "Creta Alpha",
+    slug: "creta-alpha",
+    image: "/images/cretan.png",
+    gradient: "from-blue-900 via-blue-800 to-blue-700",
+    isNew: true,
+  },
+  {
+    name: "Stargazer Cartenz X",
+    slug: "stargazer-cartenz-x",
+    image: "/images/cartenz-x.png",
+    gradient: "from-emerald-900 via-green-800 to-green-700",
+    isNew: true,
+  },
+  {
+    name: "Santa FE",
+    slug: "santa-fe",
+    image: "/images/santafe.png",
+    gradient: "from-emerald-900 via-green-800 to-green-700",
+    isNew: true,
+  },
+  {
+    name: "Kona Electric N Line",
+    slug: "kona-electric-n-line",
+    image: "/images/konan.png",
+    gradient: "from-emerald-900 via-green-800 to-green-700",
+    isNew: true,
+  },
+  {
+    name: "Stargazer Cartenz",
+    slug: "stargazer-cartenz",
+    image: "/images/cartenz.png",
+    gradient: "from-teal-900 via-teal-800 to-green-700",
+    isNew: true,
+  },
+  {
+    name: "Palisade Hybrid",
+    slug: "palisade-hybrid",
+    image: "/images/palisade.png",
+    gradient: "from-green-900 via-green-800 to-emerald-700",
+    isNew: true,
+  },
+];
+const testimonials = [
+  { image: "/images/testi1.png" },
+  { image: "/images/testi2.png" },
+  { image: "/images/testi3.png" },
+  { image: "/images/testi4.png" },
+  { image: "/images/testi5.png" },
+];
+const promos = [
+  {
+    image: "/images/promo1.png",
+    waText: "Halo, saya tertarik promo Hyundai bulan ini",
+  },
+  {
+    image: "/images/promo2.png",
+    waText: "Halo, saya tertarik promo Hyundai bulan ini",
+  },
+  {
+    image: "/images/promo3.png",
+    waText: "Halo, saya tertarik promo Hyundai bulan ini",
+  },
+  {
+    image: "/images/promo4.png",
+    waText: "Halo, saya tertarik promo Hyundai bulan ini",
+  },
+  {
+    image: "/images/promo5.png",
+    waText: "Halo, saya tertarik promo Hyundai bulan ini",
+  },
+  {
+    image: "/images/promo6.png",
+    waText: "Halo, saya tertarik promo Hyundai bulan ini",
+  },
+];
+const partners = [
+  { name: "CIMB Niaga Finance", logo: "/images/bca1.png" },
+  { name: "Clipan Finance", logo: "/images/clipan.png" },
+  { name: "Mitsui Leasing", logo: "/images/mitsui.png" },
+  { name: "Maybank Finance", logo: "/images/maybank.png" },
+  { name: "Shinhan Finance", logo: "/images/shinhan.png" },
+  { name: "BCA Finance", logo: "/images/finance/bca.png" },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<head>
+  <link rel="preload" as="image" href="/images/promo1.jpg" />
+  <link rel="preload" as="image" href="/images/promo2.jpg" />
+  <link rel="preload" as="image" href="/images/promo3.jpg" />
+  <link rel="preload" as="image" href="/images/promo4.jpg" />
+  <link rel="preload" as="image" href="/images/promo5.jpg" />
+  <link rel="preload" as="image" href="/images/promo6.jpg" />
+</head>
+
+<Navbar />
+<Hero />
+
+<section class="px-6 py-12">
+  <div
+    class="grid grid-cols-1
+           sm:grid-cols-2
+           lg:grid-cols-4
+           gap-6
+           max-w-7xl mx-auto"
+  >
+    {
+      cars.map((car) => (
+        <CarCard
+          name={car.name}
+          slug={car.slug}
+          image={car.image}
+          gradient={car.gradient}
+          isNew={car.isNew}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<section class="px-6 py-20 bg-white text-slate-900">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+    PROSES MUDAH & CEPAT
+  </h2>
+
+  <p class="text-center max-w-3xl mx-auto text-slate-600 mb-12">
+    Ingin punya mobil Hyundai impian tanpa repot? Kami bantu prosesnya jadi
+    lebih mudah dan cepat. Yuk, konsultasi sekarang!
+  </p>
+
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+  >
+    {
+      testimonials.map((item) => (
+        <button
+          class="overflow-hidden rounded-xl shadow-md hover:scale-105 transition"
+          onclick={`openModal('${item.image}')`}
+        >
+          <img
+            src={item.image}
+            alt="Testimoni Hyundai"
+            loading="lazy"
+            class="w-full h-full object-cover"
+          />
+        </button>
+      ))
+    }
+  </div>
+</section>
+
+<section class="px-6 py-20 bg-white text-slate-900">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+    Promo Hyundai Bulan Ini
+  </h2>
+
+  <p class="text-center max-w-3xl mx-auto text-slate-600 mb-12">
+    Promo terbatas, hanya berlaku bulan ini. Jangan sampai terlewat!
+  </p>
+
+  <div class="relative max-w-7xl mx-auto overflow-hidden">
+    <div
+      id="promoSlider"
+      class="flex gap-6 transition-transform duration-700 ease-in-out"
+    >
+      {
+        promos.map((promo) => (
+          <button
+            class="min-w-[70%] md:min-w-[40%] lg:min-w-[28%]
+                   overflow-hidden rounded-xl shadow-md hover:scale-105 transition"
+            onclick={`openModal('${promo.image}')`}
+          >
+            <img
+              src={promo.image}
+              width="600"
+              height="600"
+              class="w-full h-full object-cover"
+            />
+          </button>
+        ))
+      }
+    </div>
+
+    <div id="promoDots" class="flex justify-center gap-2 mt-6"></div>
+  </div>
+</section>
+
+<section class="px-6 py-20 bg-white">
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch"
+  >
+    <!-- FOTO FULL -->
+    <div class="rounded-2xl overflow-hidden shadow-lg">
+      <img
+        src="/images/testi5.png"
+        alt="Dealer Hyundai Bandung"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <!-- 4 CARD -->
+    <div class="flex flex-col gap-6">
+      <!-- CARD 1 -->
+      <div class="bg-white rounded-xl shadow-md p-6 flex gap-4 flex-1">
+        <div class="text-blue-600 flex-shrink-0">
+          <!-- Rocket -->
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-xl text-slate-900 mb-1">
+            Proses Mudah & Cepat
+          </h3>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Kami berkomitmen memberikan layanan terbaik dengan proses kredit
+            yang cepat.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="bg-white rounded-xl shadow-md p-6 flex gap-4 flex-1">
+        <div class="text-blue-600 flex-shrink-0">
+          <!-- User Group -->
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M17 20h5v-2a4 4 0 00-4-4h-1"></path>
+            <path d="M9 20H4v-2a4 4 0 014-4h1"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-xl text-slate-900 mb-1">
+            Sales Berpengalaman
+          </h3>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Hyundai Pasteur didukung sales profesional dan berpengalaman.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="bg-white rounded-xl shadow-md p-6 flex gap-4 flex-1">
+        <div class="text-blue-600 flex-shrink-0">
+          <!-- Currency -->
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 1v22"></path>
+            <path d="M17 5H9.5a3.5 3.5 0 000 7H14a3.5 3.5 0 010 7H6"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-xl text-slate-900 mb-1">Harga Fleksibel</h3>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Solusi pembelian mobil sesuai budget dan kebutuhan Anda.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="bg-white rounded-xl shadow-md p-6 flex gap-4 flex-1">
+        <div class="text-blue-600 flex-shrink-0">
+          <!-- Credit Card -->
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="2" y1="10" x2="22" y2="10"></line>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-xl text-slate-900 mb-1">
+            Harga Kredit Murah
+          </h3>
+          <p class="text-slate-600 text-base leading-relaxed">
+            DP terjangkau dan dukungan penuh hingga proses ACC.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+      OUR PARTNER FINANCE & LEASING
+    </h2>
+
+    <p class="text-center max-w-3xl mx-auto text-slate-600 mb-12">
+      Yuk, konsultasi gratis sekarang untuk harga mobil impian Anda di Dealer
+      Resmi Hyundai Bandung
+    </p>
+
+    <!-- SLIDER -->
+    <div class="relative overflow-hidden">
+      <div class="partner-slider flex items-center gap-10">
+        {
+          [...partners, ...partners].map((item) => (
+            <div
+              class="flex items-center justify-center
+         min-w-[160px] md:min-w-[200px]
+         h-24 bg-white rounded-xl shadow-sm
+         overflow-hidden hover:scale-105 transition"
+            >
+              <img
+                src={item.logo}
+                alt={item.name}
+                loading="lazy"
+                class="h-14 w-auto mx-auto object-contain"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<dialog
+  id="imageModal"
+  class="backdrop:bg-black/70 p-0 border-none"
+  onclick="event.target === this && closeModal()"
+>
+  <!-- Close button -->
+  <button
+    onclick="closeModal()"
+    class="fixed top-4 right-4 z-50 text-white bg-black/50 hover:bg-black rounded-full w-10 h-10 flex items-center justify-center transition"
+    aria-label="Tutup"
+  >
+    &times;
+  </button>
+
+  <!-- Image -->
+  <img
+    id="modalImage"
+    src=""
+    alt="Preview Testimoni"
+    loading="lazy"
+    class="max-h-[90vh] max-w-[90vw] object-contain m-auto block transition duration-300 scale-95 opacity-0"
+  />
+</dialog>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImage = document.getElementById("modalImage");
+
+  (window as any).openModal = (src: string) => {
+    if (!modalImage) return;
+    (modalImage as HTMLImageElement).src = src;
+    (modal as HTMLDialogElement)?.showModal();
+
+    // reset state
+    modalImage.classList.remove("scale-100", "opacity-100");
+    modalImage.classList.add("scale-95", "opacity-0");
+
+    // animate in
+    requestAnimationFrame(() => {
+      modalImage.classList.remove("scale-95", "opacity-0");
+      modalImage.classList.add("scale-100", "opacity-100");
+    });
+  };
+
+  (window as any).closeModal = () => {
+    if (!modalImage) return;
+    modalImage.classList.remove("scale-100", "opacity-100");
+    modalImage.classList.add("scale-95", "opacity-0");
+
+    setTimeout(() => {
+      (modal as HTMLDialogElement)?.close();
+      (modalImage as HTMLImageElement).src = "";
+    }, 200);
+  };
+</script>
+
+<script>
+  const slider = document.getElementById("promoSlider");
+  const dotsContainer = document.getElementById("promoDots");
+
+  if (slider && dotsContainer) {
+    const gap = 24;
+    const interval = 3500;
+
+    const originalSlides = Array.from(slider.children);
+    const total = originalSlides.length;
+
+    let index = 1;
+    let timer;
+
+    // CLONE
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[total - 1].cloneNode(true);
+
+    slider.appendChild(firstClone);
+    slider.insertBefore(lastClone, originalSlides[0]);
+
+    const slides = Array.from(slider.children);
+
+    function slideWidth() {
+      return (slides[0] as HTMLElement).offsetWidth + gap;
+    }
+
+    // INITIAL POS
+    if (slider)
+      slider.style.transform = `translateX(-${slideWidth() * index}px)`;
+
+    // DOTS
+    originalSlides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "w-2.5 h-2.5 rounded-full bg-slate-300 transition";
+      dot.onclick = () => moveTo(i + 1);
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.children;
+
+    function updateDots() {
+      const realIndex = (index - 1 + total) % total;
+      Array.from(dots).forEach((dot, i) => {
+        dot.classList.toggle("bg-slate-900", i === realIndex);
+        dot.classList.toggle("bg-slate-300", i !== realIndex);
+      });
+    }
+
+    function moveTo(i: number) {
+      index = i;
+      if (slider) slider.style.transition = "transform 0.45s ease";
+      if (slider)
+        slider.style.transform = `translateX(-${slideWidth() * index}px)`;
+      updateDots();
+    }
+
+    function next() {
+      index++;
+      if (slider) slider.style.transition = "transform 0.45s ease";
+      if (slider)
+        slider.style.transform = `translateX(-${slideWidth() * index}px)`;
+      updateDots();
+    }
+
+    slider?.addEventListener("transitionend", () => {
+      if (index === slides.length - 1) {
+        if (slider) slider.style.transition = "none";
+        index = 1;
+        if (slider)
+          slider.style.transform = `translateX(-${slideWidth() * index}px)`;
+      }
+
+      if (index === 0) {
+        if (slider) slider.style.transition = "none";
+        index = total;
+        if (slider)
+          slider.style.transform = `translateX(-${slideWidth() * index}px)`;
+      }
+
+      updateDots();
+    });
+
+    function start() {
+      timer = setInterval(next, interval);
+    }
+
+    updateDots();
+    start();
+  }
+</script>
+
+<Footer />

@@ -1,0 +1,38 @@
+---
+import { cars } from "../../data/cars";
+
+const { slug } = Astro.params;
+const car = cars.find((c) => c.slug === slug);
+
+if (!car) {
+  throw new Error("Mobil tidak ditemukan");
+}
+---
+
+<section class="max-w-5xl mx-auto px-6 py-12 text-white">
+  <img
+    src={car.image}
+    alt={car.name}
+    class="w-full max-h-[420px] object-contain mb-8"
+  />
+
+  <h1 class="text-3xl font-bold mb-2">
+    {car.name}
+  </h1>
+
+  <p class="text-lime-400 text-xl mb-6">
+    Mulai {car.price}
+  </p>
+
+  <p class="text-slate-300 leading-relaxed mb-8">
+    {car.description}
+  </p>
+
+  <a
+    href={`https://wa.me/6282142964242?text=Saya tertarik dengan ${car.name}`}
+    target="_blank"
+    class="inline-block bg-lime-400 text-black px-6 py-3 rounded-lg font-semibold"
+  >
+    Tanya Promo via WhatsApp
+  </a>
+</section>

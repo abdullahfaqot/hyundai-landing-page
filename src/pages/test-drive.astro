@@ -1,0 +1,97 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Navbar />
+
+<section class="px-6 py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+  <div class="max-w-3xl mx-auto text-center">
+    <h1 class="text-4xl font-bold mb-4">Booking Test Drive</h1>
+    <p class="text-slate-300 mb-10">
+      Rasakan langsung kenyamanan dan performa mobil Hyundai pilihan Anda.
+    </p>
+
+    <div class="bg-white text-slate-900 p-8 rounded-2xl shadow-lg">
+      <form
+        onsubmit="event.preventDefault(); bookingTestDrive();"
+        class="space-y-4"
+      >
+        <input
+          class="w-full border p-3 rounded"
+          id="nama"
+          placeholder="Nama Anda"
+        />
+
+        <input
+          class="w-full border p-3 rounded"
+          id="hp"
+          placeholder="No WhatsApp"
+        />
+
+        <!-- DROPDOWN TIPE MOBIL -->
+        <select
+          id="mobil"
+          class="w-full border p-3 rounded"
+        >
+          <option value="">Pilih Tipe Mobil</option>
+          <option value="Hyundai Creta">Hyundai Creta</option>
+          <option value="Hyundai Creta N Line">Hyundai Creta N Line</option>
+          <option value="Hyundai Stargazer">Hyundai Stargazer</option>
+          <option value="Hyundai Stargazer X">Hyundai Stargazer X</option>
+          <option value="Hyundai Palisade">Hyundai Palisade</option>
+          <option value="Hyundai Ioniq 5">Hyundai Ioniq 5</option>
+          <option value="Hyundai Ioniq 6">Hyundai Ioniq 6</option>
+          <option value="Hyundai Kona EV">Hyundai Kona EV</option>
+        </select>
+
+        <input
+          class="w-full border p-3 rounded"
+          id="kota"
+          placeholder="Kota / Dealer"
+        />
+
+        <button
+          class="w-full bg-lime-500 text-black py-3 rounded-full font-semibold hover:bg-lime-400 transition"
+        >
+          Booking Test Drive
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function bookingTestDrive() {
+    const nama = document.getElementById("nama").value.trim();
+    const hp = document.getElementById("hp").value.trim();
+    const mobil = document.getElementById("mobil").value;
+    const kota = document.getElementById("kota").value.trim();
+
+    if (!nama || !hp || !mobil || !kota) {
+      alert("Lengkapi semua data dulu yaaaa");
+      return;
+    }
+
+    const pesan = encodeURIComponent(
+`Halo Sales Hyundai Sevilla,
+
+Saya ingin booking test drive dengan detail berikut:
+
+Nama: ${nama}
+No HP: ${hp}
+Mobil: ${mobil}
+Kota / Dealer: ${kota}
+
+Mohon info jadwal yang tersedia.
+Terima kasih`
+    );
+
+    window.open(
+      "https://wa.me/6282142964242?text=" + pesan,
+      "_blank"
+    );
+  }
+</script>
+
+<Footer />

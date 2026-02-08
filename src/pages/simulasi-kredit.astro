@@ -1,0 +1,125 @@
+---
+const cars = [
+  { name: "Hyundai Creta", price: 350000000 },
+  { name: "Hyundai Stargazer", price: 320000000 },
+  { name: "Hyundai Ioniq 5", price: 750000000 },
+];
+---
+
+<section
+  class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-black px-4 py-20"
+>
+  <div class="w-full max-w-xl bg-white rounded-3xl shadow-2xl p-8">
+    <h1 class="text-3xl font-bold text-center mb-6">
+      Simulasi Kredit Hyundai
+    </h1>
+
+    <form id="simulasiForm" class="space-y-4">
+      <!-- PILIH MOBIL -->
+      <select id="car" class="w-full border p-3 rounded-lg">
+        <option value="">Pilih Tipe Mobil</option>
+        {cars.map((car) => (
+          <option value={car.price}>{car.name}</option>
+        ))}
+      </select>
+
+      <!-- DP -->
+      <input
+        id="dp"
+        type="number"
+        placeholder="DP (%) contoh: 20"
+        class="w-full border p-3 rounded-lg"
+      />
+
+      <!-- TENOR 1–7 TAHUN -->
+      <select id="tenor" class="w-full border p-3 rounded-lg">
+        <option value="">Pilih Tenor</option>
+        <option value="12">1 Tahun</option>
+        <option value="24">2 Tahun</option>
+        <option value="36">3 Tahun</option>
+        <option value="48">4 Tahun</option>
+        <option value="60">5 Tahun</option>
+        <option value="72">6 Tahun</option>
+        <option value="84">7 Tahun</option>
+      </select>
+
+      <!-- DATA USER -->
+      <input
+        id="nama"
+        type="text"
+        placeholder="Nama Anda"
+        class="w-full border p-3 rounded-lg"
+      />
+
+      <input
+        id="hp"
+        type="text"
+        placeholder="No WhatsApp"
+        class="w-full border p-3 rounded-lg"
+      />
+
+      <button
+        type="submit"
+        class="w-full bg-lime-500 hover:bg-lime-400 transition text-black py-3 rounded-full font-semibold"
+      >
+        Hitung & Konsultasi
+      </button>
+    </form>
+
+    <p
+      id="hasil"
+      class="mt-6 text-center text-lg font-semibold text-slate-800"
+    ></p>
+  </div>
+</section>
+
+<script is:inline>
+  const form = document.getElementById("simulasiForm");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const price = Number(document.getElementById("car").value);
+    const dpPercent = Number(document.getElementById("dp").value);
+    const tenor = Number(document.getElementById("tenor").value); // bulan
+    const nama = document.getElementById("nama").value.trim();
+    const hp = document.getElementById("hp").value.trim();
+
+    if (!price || !dpPercent || !tenor || !nama || !hp) {
+      alert("Lengkapi semua data dulu ya 🙏");
+      return;
+    }
+
+    const dp = price * (dpPercent / 100);
+    const pokok = price - dp;
+    const bunga = 0.008; // 0.8% / bulan
+    const angsuran = Math.round(
+      (pokok + pokok * bunga * tenor) / tenor
+    );
+
+    document.getElementById("hasil").innerText =
+      "Estimasi angsuran: Rp " +
+      angsuran.toLocaleString("id-ID") +
+      " / bulan";
+
+    const pesan = encodeURIComponent(
+`Halo Sales Hyundai Sevilla,
+
+Saya ingin konsultasi simulasi kredit mobil Hyundai dengan detail berikut:
+
+Nama: ${nama}
+No HP: ${hp}
+
+Harga Mobil: Rp ${price.toLocaleString("id-ID")}
+DP: ${dpPercent}%
+Tenor: ${tenor / 12} Tahun
+Estimasi Angsuran: Rp ${angsuran.toLocaleString("id-ID")} / bulan
+
+Mohon info promo terbaik.
+Terima kasih`
+    );
+
+    window.location.href =
+      "https://wa.me/6282142964242?text=" + pesan;
+  });
+</script>

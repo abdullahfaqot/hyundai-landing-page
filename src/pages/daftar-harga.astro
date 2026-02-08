@@ -1,0 +1,57 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const cars = [
+  { name: "Creta Alpha", price: "Rp 350.000.000" },
+  { name: "Stargazer Cartenz X", price: "Rp 320.000.000" },
+  { name: "Santa FE", price: "Rp 650.000.000" },
+  { name: "Kona Electric N Line", price: "Rp 750.000.000" },
+  { name: "Palisade Hybrid", price: "Rp 950.000.000" },
+];
+---
+
+<Navbar />
+
+<section
+  class="px-6 py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-12 text-white">
+      Daftar Harga Hyundai
+    </h1>
+
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <table class="w-full text-left">
+        <thead class="bg-slate-900 text-white">
+          <tr>
+            <th class="p-4">Tipe Mobil</th>
+            <th class="p-4">Harga Mulai</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            cars.map((car) => (
+              <tr class="border-b last:border-b-0 hover:bg-slate-50 transition">
+                <td class="p-4 font-medium">{car.name}</td>
+                <td class="p-4 text-lime-600 font-semibold">{car.price}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center mt-12">
+      <a
+        href="https://wa.me/6282142964242"
+        class="inline-flex items-center gap-2 bg-lime-500 text-black px-8 py-3 rounded-full font-semibold
+        hover:scale-105 transition shadow-lg"
+      >
+        Konsultasi Harga Terbaik
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />

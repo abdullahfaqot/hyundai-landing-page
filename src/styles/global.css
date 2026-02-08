@@ -1,0 +1,118 @@
+/* @import "tailwindcss"; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   NAVBAR LINK TRANSITION
+========================= */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  color: #ffffff;
+
+  transition:
+    color 0.3s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* hover halus */
+.nav-link:hover {
+  color: #a3e635; /* lime-400 */
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+/* klik */
+.nav-link:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+
+/* underline animasi */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: #a3e635;
+  border-radius: 999px;
+
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   DROPDOWN LINK STYLE
+========================= */
+.dropdown-link {
+  display: block;
+  padding: 2px 0;
+
+  color: #ffffff;
+  font-size: 0.95rem;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.dropdown-link:hover {
+  color: #a3e635;
+  transform: translateX(8px);
+  opacity: 0.95;
+}
+
+/* =========================
+   DROPDOWN APPEAR ANIMATION
+========================= */
+.group > ul {
+  transform: translateY(-6px);
+}
+
+.group:hover > ul {
+  transform: translateY(0);
+}
+/* =========================
+   PARTNER FINANCE SLIDER
+   Infinite Loop + Pause Hover
+========================= */
+
+@keyframes partner-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-slider {
+  display: flex;
+  width: max-content;
+  animation: partner-slide 28s linear infinite;
+  will-change: transform;
+}
+
+/* pause saat hover */
+.partner-slider:hover {
+  animation-play-state: paused;
+}
+
+/* responsive speed */
+@media (max-width: 768px) {
+  .partner-slider {
+    animation-duration: 22s;
+  }
+}

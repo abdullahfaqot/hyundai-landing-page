@@ -1,0 +1,21 @@
+---
+import CarCard from "../../components/CarCard.astro";
+import { cars } from "../../data/cars";
+---
+
+<section class="max-w-7xl mx-auto px-6 py-12">
+  <h1 class="text-3xl font-bold mb-8 text-white">
+    Tipe Mobil Hyundai
+  </h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {cars.map((car) => (
+      <CarCard
+        name={car.name}
+        price={car.price}
+        image={car.image}
+        slug={car.slug}
+      />
+    ))}
+  </div>
+</section>
