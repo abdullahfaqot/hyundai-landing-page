@@ -4,55 +4,62 @@ import Footer from "../components/Footer.astro";
 
 const cars = [
   {
-    name: "Creta Alpha",
-    slug: "creta-alpha",
+    name: "Creta N Line",
+    slug: "creta-n-line",
     image: "/images/cretan.png",
-    gradient: "from-blue-900 via-blue-800 to-blue-700",
     isNew: true,
   },
   {
     name: "Stargazer Cartenz X",
     slug: "stargazer-cartenz-x",
     image: "/images/cartenz-x.png",
-    gradient: "from-emerald-900 via-green-800 to-green-700",
+    isNew: true,
+  },
+  {
+    name: "Stargazer Cartenz",
+    slug: "stargazer-cartenz",
+    image: "/images/cartenz.png",
     isNew: true,
   },
   {
     name: "Kona Electric N Line",
     slug: "kona-electric-n-line",
     image: "/images/konan.png",
-    gradient: "from-emerald-900 via-green-800 to-green-700",
     isNew: true,
   },
   {
     name: "Santa FE",
     slug: "santafe",
     image: "/images/santafe.png",
-    gradient: "from-emerald-900 via-green-800 to-green-700",
+    isNew: true,
+  },
+  {
+    name: "Palisade",
+    slug: "palisade",
+    image: "/images/palisade.png",
+    isNew: true,
+  },
+  {
+    name: "Ioniq 5",
+    slug: "ioniq-5",
+    image: "/images/ioniq5.png",
     isNew: true,
   },
   {
     name: "Palisade Hybrid",
     slug: "palisade-hybrid",
-    image: "/images/palisade.png",
-    gradient: "from-emerald-900 via-green-800 to-green-700",
-    isNew: true,
-  },
-  {
-    name: "Creta N Line",
-    slug: "creta-n-line",
-    image: "/images/cretan.png",
-    gradient: "from-emerald-900 via-green-800 to-green-700",
+    image: "/images/palisade-hybrid.png",
     isNew: true,
   },
 ];
+
 ---
 
 <Navbar />
 
-<section class="w-full px-6 py-16 bg-slate-950">
+<section class="w-full px-6 py-20 bg-[#E9DFD3]">
   <div class="max-w-7xl mx-auto">
-    <h1 class="text-4xl font-bold text-white text-center mb-12">
+    <h1 class="text-4xl font-bold text-[#002C5F] text-center mb-14">
       Tipe Mobil Hyundai
     </h1>
 
@@ -60,57 +67,56 @@ const cars = [
       {cars.map((car) => (
         <a
           href={`/product/${car.slug}`}
-          class={`group relative min-h-[420px]
-          rounded-xl overflow-hidden
-          bg-gradient-to-br ${car.gradient}
-          shadow-[0_25px_45px_rgba(0,0,0,0.4)]
-          transition-all duration-500
-          hover:-translate-y-2`}
+          class="group relative min-h-[380px]
+                 rounded-2xl overflow-hidden
+                 bg-[#E9DFD3]
+                 transition-all duration-300
+                 hover:-translate-y-1 hover:shadow-2xl"
         >
-          <!-- overlay -->
-          <div class="absolute inset-0 bg-black/10"></div>
+          <!-- soft light -->
+          <div class="absolute inset-0 bg-white/40"></div>
 
           <!-- text -->
-          <div class="relative z-10 p-7">
-            <h3 class="text-yellow-400 font-extrabold tracking-widest">
+          <div class="relative z-20 p-6">
+            <h3 class="text-[#002C5F] font-extrabold tracking-widest text-lg">
               HYUNDAI
             </h3>
 
-            <h4 class="mt-2 text-white font-bold text-xl uppercase">
-              {car.name}
-            </h4>
-
             {car.isNew && (
-              <span class="inline-block mt-2 text-xs bg-red-600 text-white px-3 py-1 rounded">
+              <span class="inline-block mt-2 text-xs bg-red-600 text-white px-2 py-0.5 rounded">
                 NEW
               </span>
             )}
           </div>
 
-          <!-- fade -->
+          <!-- image wrapper -->
           <div
-            class="absolute bottom-0 left-0 right-0 h-52
-            bg-gradient-to-t from-black/60 to-transparent z-[1]"
+            class="absolute bottom-14 left-0 right-0
+                   flex justify-center items-end
+                   h-[240px] z-20"
+          >
+            <img
+              src={car.image}
+              alt={car.name}
+              class="w-[120%] max-w-none
+                     object-contain
+                     transition-transform duration-500
+                     group-hover:scale-110 group-hover:-translate-y-3
+                     drop-shadow-[0_35px_45px_rgba(0,0,0,0.35)]"
+            />
+          </div>
+
+          <!-- fade bottom -->
+          <div
+            class="absolute bottom-0 left-0 right-0 h-32
+                   bg-gradient-to-t from-black/25 to-transparent z-10"
           ></div>
 
-          <!-- image -->
-          <img
-  src={car.image}
-  alt={car.name}
-  class="absolute bottom-0 left-1/2 -translate-x-1/2
-  w-[95%] h-[70%]
-  object-contain z-[2]
-  transition-all duration-500
-  group-hover:scale-110 group-hover:-translate-y-6
-  drop-shadow-[0_35px_45px_rgba(0,0,0,0.45)]
-  [mask-image:linear-gradient(to_top,transparent,black_30%)]"
-/>
-
-
-          <!-- footer -->
+          <!-- name -->
           <div
-            class="absolute bottom-6 left-0 right-0 text-center
-            text-white font-semibold text-lg z-10"
+            class="absolute bottom-5 left-0 right-0
+                   text-center text-[#002C5F]
+                   font-semibold text-lg z-20"
           >
             {car.name}
           </div>
@@ -119,5 +125,6 @@ const cars = [
     </div>
   </div>
 </section>
+
 
 <Footer />

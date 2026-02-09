@@ -3,12 +3,14 @@ import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
 import CarCard from "../components/CarCard.astro";
 import Footer from "../components/Footer.astro";
+import PdfModal from "../components/PdfModal.astro";
 
 const cars = [
   {
-    name: "Creta Alpha",
-    slug: "creta-alpha",
+    name: "The New Creta",
+    slug: "the-new-creta",
     image: "/images/cretan.png",
+    pdf: "/brosur/the-new-creta.pdf",
     gradient: "from-blue-900 via-blue-800 to-blue-700",
     isNew: true,
   },
@@ -16,20 +18,23 @@ const cars = [
     name: "Stargazer Cartenz X",
     slug: "stargazer-cartenz-x",
     image: "/images/cartenz-x.png",
+    pdf: "/brosur/stargazer-cartenz-x.pdf",
     gradient: "from-emerald-900 via-green-800 to-green-700",
     isNew: true,
   },
   {
-    name: "Santa FE",
-    slug: "santa-fe",
+    name: "All New Santa FE",
+    slug: "all-new-santa-fe",
     image: "/images/santafe.png",
+    pdf: "/brosur/all-new-santa-fe.pdf",
     gradient: "from-emerald-900 via-green-800 to-green-700",
     isNew: true,
   },
   {
-    name: "Kona Electric N Line",
-    slug: "kona-electric-n-line",
+    name: "Kona EV",
+    slug: "kona-ev",
     image: "/images/konan.png",
+    pdf: "/brosur/kona-ev.pdf",
     gradient: "from-emerald-900 via-green-800 to-green-700",
     isNew: true,
   },
@@ -37,17 +42,36 @@ const cars = [
     name: "Stargazer Cartenz",
     slug: "stargazer-cartenz",
     image: "/images/cartenz.png",
+    pdf: "/brosur/stargazer-cartenz.pdf",
     gradient: "from-teal-900 via-teal-800 to-green-700",
     isNew: true,
   },
   {
-    name: "Palisade Hybrid",
-    slug: "palisade-hybrid",
+    name: "All New Palisade HEV",
+    slug: "all-new-palisade-hev",
     image: "/images/palisade.png",
+    pdf: "/brosur/all-new-palisade-hev.pdf",
+    gradient: "from-green-900 via-green-800 to-emerald-700",
+    isNew: true,
+  },
+  {
+    name: "Ioniq 5",
+    slug: "ioniq-5",
+    image: "/images/ioniq5.png",
+    pdf: "/brosur/ioniq-5.pdf",
+    gradient: "from-green-900 via-green-800 to-emerald-700",
+    isNew: true,
+  },
+  {
+    name: "Palisade",
+    slug: "palisade",
+    image: "/images/palisade-hybrid.png",
+    pdf: "/brosur/palisade.pdf",
     gradient: "from-green-900 via-green-800 to-emerald-700",
     isNew: true,
   },
 ];
+
 const testimonials = [
   { image: "/images/testi1.png" },
   { image: "/images/testi2.png" },
@@ -83,21 +107,34 @@ const promos = [
 ];
 const partners = [
   { name: "CIMB Niaga Finance", logo: "/images/bca1.png" },
-  { name: "Clipan Finance", logo: "/images/clipan.png" },
+  { name: "Mandiri Tunas Finance", logo: "/images/mandiri.png" },
   { name: "Mitsui Leasing", logo: "/images/mitsui.png" },
   { name: "Maybank Finance", logo: "/images/maybank.png" },
   { name: "Shinhan Finance", logo: "/images/shinhan.png" },
   { name: "BCA Finance", logo: "/images/finance/bca.png" },
 ];
+
+const pdfs = [
+  {
+    name: "The all-new KONA Electric",
+    slug: "the-all-new-kona-electric",
+    pdf: "/brosur/kona.pdf",
+  },
+  { name: "Palisade", slug: "palisade", pdf: "/brosur/palisade.pdf" },
+  { name: "Stargazer X", slug: "stargazer-x", pdf: "/brosur/stargazer-x.pdf" },
+  { name: "Stargazer", slug: "stargazer", pdf: "/brosur/stargazer.pdf" },
+  { name: "Creta", slug: "creta", pdf: "/brosur/creta.pdf" },
+  { name: "Ioniq 5", slug: "ioniq-5", pdf: "/brosur/ioniq-5.pdf" },
+];
 ---
 
 <head>
-  <link rel="preload" as="image" href="/images/promo1.jpg" />
-  <link rel="preload" as="image" href="/images/promo2.jpg" />
-  <link rel="preload" as="image" href="/images/promo3.jpg" />
-  <link rel="preload" as="image" href="/images/promo4.jpg" />
-  <link rel="preload" as="image" href="/images/promo5.jpg" />
-  <link rel="preload" as="image" href="/images/promo6.jpg" />
+  <link rel="preload" as="image" href="/images/promo1.png" />
+  <link rel="preload" as="image" href="/images/promo2.png" />
+  <link rel="preload" as="image" href="/images/promo3.png" />
+  <link rel="preload" as="image" href="/images/promo4.png" />
+  <link rel="preload" as="image" href="/images/promo5.png" />
+  <link rel="preload" as="image" href="/images/promo6.png" />
 </head>
 
 <Navbar />
@@ -166,24 +203,24 @@ const partners = [
   </p>
 
   <div class="relative max-w-7xl mx-auto overflow-hidden">
-    <div
-      id="promoSlider"
-      class="flex gap-6 transition-transform duration-700 ease-in-out"
-    >
+    <div id="promoSlider" class="flex gap-6 will-change-transform">
       {
         promos.map((promo) => (
-          <button
-            class="min-w-[70%] md:min-w-[40%] lg:min-w-[28%]
-                   overflow-hidden rounded-xl shadow-md hover:scale-105 transition"
-            onclick={`openModal('${promo.image}')`}
-          >
-            <img
-              src={promo.image}
-              width="600"
-              height="600"
-              class="w-full h-full object-cover"
-            />
-          </button>
+          <div class="min-w-[70%] md:min-w-[40%] lg:min-w-[28%] shadow">
+            <a
+              href={`https://wa.me/628123456789?text=${encodeURIComponent(
+                promo.waText,
+              )}`}
+              target="_blank"
+              class="promo-card block rounded-xl overflow-hidden group"
+            >
+              <img
+                src={promo.image}
+                loading="lazy"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              />
+            </a>
+          </div>
         ))
       }
     </div>
@@ -309,8 +346,8 @@ const partners = [
   </div>
 </section>
 
-<section class="py-20 bg-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="py-20 bg-white overflow-x-hidden">
+  <div class="max-w-7xl mx-auto px-6 overflow-hidden">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
       OUR PARTNER FINANCE & LEASING
     </h2>
@@ -322,14 +359,15 @@ const partners = [
 
     <!-- SLIDER -->
     <div class="relative overflow-hidden">
+      <div class="overflow-hidden w-full"></div>
       <div class="partner-slider flex items-center gap-10">
         {
           [...partners, ...partners].map((item) => (
             <div
               class="flex items-center justify-center
-         min-w-[160px] md:min-w-[200px]
-         h-24 bg-white rounded-xl shadow-sm
-         overflow-hidden hover:scale-105 transition"
+         min-w-[160px] md:min-w-[200px] flex-shrink-0
+  h-24 bg-white rounded-xl shadow-sm
+  overflow-hidden hover:scale-105 transition"
             >
               <img
                 src={item.logo}
@@ -401,96 +439,166 @@ const partners = [
   };
 </script>
 
-<script>
-  const slider = document.getElementById("promoSlider");
-  const dotsContainer = document.getElementById("promoDots");
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.getElementById("promoSlider");
+    const dotsContainer = document.getElementById("promoDots");
 
-  if (slider && dotsContainer) {
+    if (!slider || !dotsContainer) return;
+
+    let slides = Array.from(slider.children);
+    const total = slides.length;
     const gap = 24;
-    const interval = 3500;
-
-    const originalSlides = Array.from(slider.children);
-    const total = originalSlides.length;
-
-    let index = 1;
-    let timer;
+    let index = 0;
+    let slideSize = 0;
+    let timer = null;
 
     // CLONE
-    const firstClone = originalSlides[0].cloneNode(true);
-    const lastClone = originalSlides[total - 1].cloneNode(true);
+    const first = slides[0].cloneNode(true);
+    const last = slides[total - 1].cloneNode(true);
 
-    slider.appendChild(firstClone);
-    slider.insertBefore(lastClone, originalSlides[0]);
+    slider.appendChild(first);
+    slider.insertBefore(last, slides[0]);
 
-    const slides = Array.from(slider.children);
+    slides = Array.from(slider.children);
 
-    function slideWidth() {
-      return (slides[0] as HTMLElement).offsetWidth + gap;
+    function calcSize() {
+      const refSlide = slides[1];
+      if (!refSlide) return;
+
+      slideSize = refSlide.getBoundingClientRect().width + gap;
+      slider.style.transition = "none";
+      slider.style.transform = `translateX(-${slideSize}px)`;
     }
 
-    // INITIAL POS
-    if (slider)
-      slider.style.transform = `translateX(-${slideWidth() * index}px)`;
-
-    // DOTS
-    originalSlides.forEach((_, i) => {
-      const dot = document.createElement("button");
-      dot.className = "w-2.5 h-2.5 rounded-full bg-slate-300 transition";
-      dot.onclick = () => moveTo(i + 1);
-      dotsContainer.appendChild(dot);
+    // WAIT IMAGE LOAD
+    const images = slider.querySelectorAll("img");
+    Promise.all(
+      Array.from(images).map(
+        (img) =>
+          img.complete ||
+          new Promise((resolve) => {
+            img.addEventListener("load", resolve, { once: true });
+            img.addEventListener("error", resolve, { once: true });
+          }),
+      ),
+    ).then(() => {
+      calcSize();
+      start();
     });
 
-    const dots = dotsContainer.children;
+    window.addEventListener("resize", calcSize);
+
+    // DOTS
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement("button");
+      dot.className = "w-2.5 h-2.5 rounded-full bg-slate-300 transition";
+      dot.addEventListener("click", () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    const dots = Array.from(dotsContainer.children);
 
     function updateDots() {
-      const realIndex = (index - 1 + total) % total;
-      Array.from(dots).forEach((dot, i) => {
-        dot.classList.toggle("bg-slate-900", i === realIndex);
-        dot.classList.toggle("bg-slate-300", i !== realIndex);
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("bg-slate-900", i === index);
+        dot.classList.toggle("bg-slate-300", i !== index);
       });
     }
 
-    function moveTo(i: number) {
+    function goTo(i) {
       index = i;
-      if (slider) slider.style.transition = "transform 0.45s ease";
-      if (slider)
-        slider.style.transform = `translateX(-${slideWidth() * index}px)`;
+      slider.style.transition = "transform 0.5s ease";
+      slider.style.transform = `translateX(-${slideSize * (i + 1)}px)`;
       updateDots();
+      restart();
     }
 
     function next() {
       index++;
-      if (slider) slider.style.transition = "transform 0.45s ease";
-      if (slider)
-        slider.style.transform = `translateX(-${slideWidth() * index}px)`;
-      updateDots();
+      slider.style.transition = "transform 0.5s ease";
+      slider.style.transform = `translateX(-${slideSize * (index + 1)}px)`;
     }
 
-    slider?.addEventListener("transitionend", () => {
-      if (index === slides.length - 1) {
-        if (slider) slider.style.transition = "none";
-        index = 1;
-        if (slider)
-          slider.style.transform = `translateX(-${slideWidth() * index}px)`;
-      }
+    slider.addEventListener("transitionend", () => {
+      if (index === total) {
+        slider.style.transition = "none";
+        index = 0;
 
-      if (index === 0) {
-        if (slider) slider.style.transition = "none";
-        index = total;
-        if (slider)
-          slider.style.transform = `translateX(-${slideWidth() * index}px)`;
+        // RESET DI FRAME YANG SAMA (NO BLINK)
+        requestAnimationFrame(() => {
+          slider.style.transform = `translateX(-${slideSize}px)`;
+        });
       }
 
       updateDots();
     });
 
     function start() {
-      timer = setInterval(next, interval);
+      timer = setInterval(next, 3500);
     }
 
+    function restart() {
+      if (timer) clearInterval(timer);
+      start();
+    }
+
+    // PAUSE SAAT TAB HIDDEN
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && timer) clearInterval(timer);
+      else start();
+    });
+
     updateDots();
-    start();
-  }
+  });
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("pdfModal");
+    const frame = document.getElementById(
+      "pdfFrame",
+    ) as HTMLIFrameElement | null;
+    const openBtn = document.getElementById(
+      "pdfOpenNewTab",
+    ) as HTMLAnchorElement | null;
+
+    document.querySelectorAll("[data-pdf]").forEach((card) => {
+      card.addEventListener("click", () => {
+        const url = card.getAttribute("data-pdf");
+        if (!url || !modal || !frame) return;
+
+        frame.src = `${url}#toolbar=1&navpanes=0`;
+
+        if (openBtn) {
+          openBtn.href = url;
+        }
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      });
+    });
+  });
+
+  function closePdf() {
+    const modal = document.getElementById("pdfModal");
+    const frame = document.getElementById(
+      "pdfFrame",
+    ) as HTMLIFrameElement | null;
+    const openBtn = document.getElementById(
+      "pdfOpenNewTab",
+    ) as HTMLAnchorElement | null;
+
+    if (modal && frame) {
+      frame.src = "";
+      if (openBtn) openBtn.href = "#";
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+  }
+
+  (window as any).closePdf = closePdf;
+</script>
+
+<PdfModal />
 <Footer />

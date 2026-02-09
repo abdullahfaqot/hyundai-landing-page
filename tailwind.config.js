@@ -5,3 +5,17 @@ module.exports = {
   },
   plugins: [],
 };
+// tailwind.config.js
+export default {
+  theme: {
+    extend: {
+      fontFamily: {
+        hyundai: ["Inter", "system-ui", "sans-serif"],
+      },
+      letterSpacing: {
+        hyundai: "0.01em",
+      },
+    },
+  },
+};
+

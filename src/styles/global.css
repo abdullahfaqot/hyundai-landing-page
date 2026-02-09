@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  overflow-x: clip;
+}
+
+
 /* =========================
    NAVBAR LINK TRANSITION
 ========================= */
@@ -23,7 +28,8 @@
 
 /* hover halus */
 .nav-link:hover {
-  color: #a3e635; /* lime-400 */
+  color: #a3e635;
+  /* lime-400 */
   transform: translateY(-1px);
   opacity: 0.95;
 }
@@ -77,42 +83,129 @@
 /* =========================
    DROPDOWN APPEAR ANIMATION
 ========================= */
-.group > ul {
+.group>ul {
   transform: translateY(-6px);
 }
 
-.group:hover > ul {
+.group:hover>ul {
   transform: translateY(0);
 }
+
 /* =========================
    PARTNER FINANCE SLIDER
-   Infinite Loop + Pause Hover
+   MOBILE SAFE VERSION
 ========================= */
-
 @keyframes partner-slide {
-  0% {
-    transform: translateX(0);
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  100% {
-    transform: translateX(-50%);
+
+  to {
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
+
+/* pembungkus anti bocor */
+.partner-track {
+  width: 100%;
+  overflow-x: clip;
+  contain: layout paint;
+}
+
+
+
+/* slider utama */
 .partner-slider {
   display: flex;
-  width: max-content;
-  animation: partner-slide 28s linear infinite;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  animation: partner-slide 26s linear infinite;
   will-change: transform;
 }
 
-/* pause saat hover */
-.partner-slider:hover {
-  animation-play-state: paused;
+
+
+/* item */
+.partner-item {
+  min-width: 160px;
+  height: 96px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  margin-right: 2.5rem;
 }
 
-/* responsive speed */
-@media (max-width: 768px) {
-  .partner-slider {
-    animation-duration: 22s;
+/* logo */
+.partner-item img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* pause on hover (desktop only) */
+@media (hover: hover) {
+  .partner-slider:hover {
+    animation-play-state: paused;
   }
 }
+
+/* mobile tuning */
+@media (max-width: 768px) {
+  .partner-slider {
+    animation-duration: 20s;
+  }
+
+  .partner-item {
+    min-width: 140px;
+    height: 88px;
+    margin-right: 2rem;
+  }
+
+  .partner-item img {
+    height: 48px;
+  }
+}
+
+/* GLOBAL SAFETY NET */
+html,
+body {
+  overflow-x: hidden;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  max-width: 520px;
+  transform: translateX(40px) scale(1.15);
+  opacity: 0;
+  transition:
+    opacity 0.9s ease,
+    transform 1.2s cubic-bezier(.4, 0, .2, 1);
+  filter: drop-shadow(0 45px 90px rgba(0, 0, 0, .28));
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: translateX(0) scale(1.25);
+  z-index: 2;
+}
+
+/* global.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");

@@ -1,0 +1,79 @@
+<div
+    id="pdfModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center
+         bg-black/70 backdrop-blur-sm p-4"
+>
+    <div
+        class="relative w-full max-w-5xl h-[85vh]
+           bg-white rounded-2xl shadow-2xl
+           overflow-hidden flex flex-col"
+    >
+        <!-- HEADER -->
+        <div class="flex items-center justify-between px-5 py-3 border-b">
+            <h3 class="font-semibold text-slate-800">Brosur Mobil Hyundai</h3>
+
+            <div class="flex items-center gap-2">
+                <!-- FULL SCREEN -->
+                <a
+                    id="pdfOpenNewTab"
+                    href="#"
+                    target="_blank"
+                    class="p-2 rounded-lg
+                 text-slate-600
+                 hover:bg-slate-100 hover:text-slate-900
+                 transition"
+                    title="Buka Full Screen"
+                >
+                    <!-- Fullscreen Icon -->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8 3H5a2 2 0 00-2 2v3M16 3h3a2 2 0 012 2v3
+                 M8 21H5a2 2 0 01-2-2v-3
+                 M16 21h3a2 2 0 002-2v-3"
+                        ></path>
+                    </svg>
+                </a>
+
+                <!-- CLOSE -->
+                <button
+                    onclick="closePdf()"
+                    class="p-2 rounded-lg
+                 text-slate-600
+                 hover:bg-red-100 hover:text-red-600
+                 transition"
+                    title="Tutup"
+                >
+                    <!-- Close Icon -->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- PDF CONTENT -->
+        <div class="flex-1 bg-slate-100">
+            <iframe id="pdfFrame" src="" class="w-full h-full" frameborder="0"
+            ></iframe>
+        </div>
+    </div>
+</div>

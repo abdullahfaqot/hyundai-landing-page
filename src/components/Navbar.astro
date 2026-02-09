@@ -1,41 +1,32 @@
-<header class="bg-slate-900 text-white relative z-50">
-
+<header
+  id="navbar"
+  class="absolute top-0 left-0 w-full
+    z-50
+    bg-transparent
+    text-slate-900
+    transition-all duration-300
+    hover:bg-white/95 hover:backdrop-blur hover:shadow-lg"
+>
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
     <!-- Logo -->
-    <a
-      href="/"
-      class="text-xl font-bold tracking-wide transition-transform duration-150 hover:scale-105 active:scale-95"
-    >
-      HYUNDAI
+    <a href="/" class="flex items-center gap-3 select-none">
+      <img
+        src="/images/logo-hyundai.png"
+        alt="Hyundai Logo"
+        class="h-8 w-auto"
+      />
+      <span class="text-xl font-extrabold tracking-[0.15em]"> HYUNDAI </span>
     </a>
 
     <!-- Menu -->
     <ul class="hidden md:flex items-center gap-8 font-medium">
-      <li>
-        <a href="/" class="nav-link hover:text-lime-500">Beranda</a>
-      </li>
+      <li><a href="/" class="nav-link">Beranda</a></li>
+      <li><a href="/tipe-mobil" class="nav-link">Tipe Mobil</a></li>
+      <li><a href="/daftar-harga" class="nav-link">Daftar Harga</a></li>
+      <li><a href="/simulasi-kredit" class="nav-link">Simulasi Kredit</a></li>
 
-      <li>
-        <a href="/tipe-mobil" class="nav-link hover:text-lime-500">
-          Tipe Mobil
-        </a>
-      </li>
-
-      <li>
-        <a href="/daftar-harga" class="nav-link hover:text-lime-500">
-          Daftar Harga
-        </a>
-      </li>
-
-      <li>
-        <a href="/simulasi-kredit" class="nav-link hover:text-lime-500">
-          Simulasi Kredit
-        </a>
-      </li>
-
-      <!-- More -->
       <li class="relative group">
-        <button class="flex items-center gap-1 nav-link hover:text-lime-500">
+        <button class="flex items-center gap-1 nav-link">
           More
           <svg
             class="w-4 h-4 mt-1"
@@ -50,23 +41,27 @@
 
         <!-- Dropdown -->
         <ul
-          class="absolute top-full left-0 mt-3 w-48 bg-white text-slate-900 rounded-xl shadow-lg
-                 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+          class="absolute top-full left-0 mt-3 w-48
+                 bg-white text-slate-900
+                 rounded-xl shadow-xl border border-black/5
+                 opacity-0 invisible
+                 group-hover:opacity-100 group-hover:visible
+                 transition-all"
         >
           <li>
-            <a href="/test-drive" class="block px-4 py-3 hover:bg-slate-100">
-              Test Drive
-            </a>
+            <a href="/test-drive" class="block px-4 py-3 hover:bg-slate-100"
+              >Test Drive</a
+            >
           </li>
           <li>
-            <a href="/syarat-kredit" class="block px-4 py-3 hover:bg-slate-100">
-              Syarat Kredit
-            </a>
+            <a href="/syarat-kredit" class="block px-4 py-3 hover:bg-slate-100"
+              >Syarat Kredit</a
+            >
           </li>
           <li>
-            <a href="/kontak" class="block px-4 py-3 hover:bg-slate-100">
-              Kontak
-            </a>
+            <a href="/kontak" class="block px-4 py-3 hover:bg-slate-100"
+              >Kontak</a
+            >
           </li>
         </ul>
       </li>
@@ -76,10 +71,45 @@
     <a
       href="https://wa.me/6282142964242"
       target="_blank"
-      class="hidden md:inline-block bg-lime-500 text-black px-5 py-2 rounded-full font-semibold
-             transition-all duration-200 hover:bg-lime-600 hover:scale-105 active:scale-95"
+      class="hidden md:inline-block
+        bg-sky-200 text-sky-900
+        px-5 py-2 rounded-full font-semibold
+        transition-all
+        hover:bg-sky-300 hover:scale-105"
     >
       Konsultasi Gratis
     </a>
   </nav>
 </header>
+<style is:global>
+  .nav-link {
+    position: relative;
+    padding: 0.25rem 0;
+    color: #0f172a; /* slate-900 */
+    transition:
+      color 200ms ease,
+      font-weight 200ms ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #e5ded3, #cfc6b8);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 250ms ease;
+  }
+
+  .nav-link:hover {
+    color: #475569; /* slate-600 */
+    font-weight: 600;
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+</style>
