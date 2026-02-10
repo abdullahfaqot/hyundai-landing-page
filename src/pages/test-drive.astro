@@ -5,26 +5,30 @@ import Footer from "../components/Footer.astro";
 
 <Navbar />
 
-<section class="px-6 py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+<section
+  class="px-6 py-24
+         bg-gradient-to-br from-[#F7F3EA] via-[#F3ECDC] to-[#EFE6D2]"
+>
   <div class="max-w-3xl mx-auto text-center">
-    <h1 class="text-4xl font-bold mb-4">Booking Test Drive</h1>
-    <p class="text-slate-300 mb-10">
+    <h1 class="text-4xl font-bold mb-4 text-slate-800">Booking Test Drive</h1>
+
+    <p class="text-slate-600 mb-10">
       Rasakan langsung kenyamanan dan performa mobil Hyundai pilihan Anda.
     </p>
 
-    <div class="bg-white text-slate-900 p-8 rounded-2xl shadow-lg">
+    <div class="bg-white text-slate-900 p-8 rounded-2xl shadow-xl">
       <form
         onsubmit="event.preventDefault(); bookingTestDrive();"
         class="space-y-4"
       >
         <input
-          class="w-full border p-3 rounded"
+          class="w-full border border-slate-300 p-3 rounded-lg"
           id="nama"
           placeholder="Nama Anda"
         />
 
         <input
-          class="w-full border p-3 rounded"
+          class="w-full border border-slate-300 p-3 rounded-lg"
           id="hp"
           placeholder="No WhatsApp"
         />
@@ -32,7 +36,7 @@ import Footer from "../components/Footer.astro";
         <!-- DROPDOWN TIPE MOBIL -->
         <select
           id="mobil"
-          class="w-full border p-3 rounded"
+          class="w-full border border-slate-300 p-3 rounded-lg"
         >
           <option value="">Pilih Tipe Mobil</option>
           <option value="Hyundai Creta">Hyundai Creta</option>
@@ -46,13 +50,17 @@ import Footer from "../components/Footer.astro";
         </select>
 
         <input
-          class="w-full border p-3 rounded"
+          class="w-full border border-slate-300 p-3 rounded-lg"
           id="kota"
           placeholder="Kota / Dealer"
         />
 
         <button
-          class="w-full bg-lime-500 text-black py-3 rounded-full font-semibold hover:bg-lime-400 transition"
+          class="w-full
+                 bg-sky-400 text-white
+                 py-3 rounded-full font-semibold
+                 hover:bg-sky-500 hover:scale-105
+                 transition shadow-lg"
         >
           Booking Test Drive
         </button>
@@ -69,12 +77,12 @@ import Footer from "../components/Footer.astro";
     const kota = document.getElementById("kota").value.trim();
 
     if (!nama || !hp || !mobil || !kota) {
-      alert("Lengkapi semua data dulu yaaaa");
+      alert("Lengkapi semua data dulu ya 🙏");
       return;
     }
 
     const pesan = encodeURIComponent(
-`Halo Sales Hyundai Sevilla,
+      `Halo Sales Hyundai Sevilla 👋
 
 Saya ingin booking test drive dengan detail berikut:
 
@@ -83,14 +91,11 @@ No HP: ${hp}
 Mobil: ${mobil}
 Kota / Dealer: ${kota}
 
-Mohon info jadwal yang tersedia.
-Terima kasih`
+Mohon info jadwal test drive yang tersedia.
+Terima kasih 🙏`,
     );
 
-    window.open(
-      "https://wa.me/6282142964242?text=" + pesan,
-      "_blank"
-    );
+    window.open("https://wa.me/6282142964242?text=" + pesan, "_blank");
   }
 </script>
 

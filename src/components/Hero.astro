@@ -1,93 +1,42 @@
----
-/*
-  Hero Section – Hyundai Premium
-  Background Image + Soft Parallax (CSS only)
-*/
----
-
-<section id="hero" class="relative overflow-x-clip bg-[#F6F1E7]">
-  <!-- BACKGROUND IMAGE + PARALLAX -->
+<section
+  id="hero"
+  class="relative overflow-hidden bg-[#F6F1E7] min-h-[85vh] md:min-h-screen flex items-center"
+>
+  <!-- BACKGROUND IMAGE -->
   <div
     class="absolute inset-0 z-0
            bg-[url('/images/hero-bg.jpg')]
-           bg-cover bg-center bg-no-repeat
-           md:bg-fixed"
+           bg-cover bg-center bg-no-repeat md:bg-fixed"
     aria-hidden="true"
-  >
-  </div>
+  ></div>
 
-  <!-- GRADIENT OVERLAY (TEXT SAFE AREA) -->
+  <!-- GRADIENT KIRI -->
   <div
     class="absolute inset-0 z-10
            bg-gradient-to-r
            from-[#F6F1E7]/95
-           via-[#F6F1E7]/85
-           to-[#F6F1E7]/40"
+           via-[#F6F1E7]/80
+           to-transparent"
     aria-hidden="true"
-  >
-  </div>
-
-  <!-- SOFT LIGHT RIGHT -->
-  <div
-    class="pointer-events-none absolute -top-40 -right-40
-           w-[720px] h-[720px] rounded-full
-           bg-white/60 blur-[140px]
-           z-20"
-  >
-  </div>
-
-  <!-- SOFT LIGHT LEFT -->
-  <div
-    class="pointer-events-none absolute top-1/3 -left-40
-           w-[520px] h-[520px] rounded-full
-           bg-white/40 blur-[120px]
-           z-20"
-  >
-  </div>
-
-  <!-- SUBTLE NOISE TEXTURE -->
-  <div
-    class="pointer-events-none absolute inset-0
-           bg-[url('/images/noise.png')]
-           opacity-[0.035] mix-blend-multiply
-           z-20"
-  >
-  </div>
+  ></div>
 
   <!-- CONTENT -->
   <div
     class="relative z-30
            max-w-7xl mx-auto px-6
-           pt-24 pb-40
            grid grid-cols-1 md:grid-cols-2
-           gap-14 items-center"
+           gap-14 items-center w-full"
   >
-    <!-- TEXT -->
-    <div>
-      <h1
-        class="text-4xl md:text-5xl xl:text-6xl
-               font-bold leading-tight
-               mb-6 max-w-xl"
-      >
-        Dealer Resmi Hyundai Bandung.
-      </h1>
+   <!-- TEXT --> <div> <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight mb-6 max-w-xl" > Dealer Resmi Hyundai Bandung. </h1> <p class="text-slate-700 text-lg md:text-xl leading-relaxed mb-10 max-w-xl" > Masih bingung pilih mobil yang cocok? Tenang, kami bantu temukan pilihan terbaik sesuai kebutuhan dan anggaran Anda! </p>
 
-      <p
-        class="text-slate-700 text-lg md:text-xl
-               leading-relaxed mb-10 max-w-xl"
-      >
-        Masih bingung pilih mobil yang cocok? Tenang, kami bantu temukan pilihan
-        terbaik sesuai kebutuhan dan anggaran Anda!
-      </p>
 
       <div class="flex flex-wrap gap-4">
         <a
-          href="https://wa.me/6282142964242?text=Halo%20Sales%20Hyundai%20Sevilla,%20saya%20ingin%20konsultasi%20mobil."
+          href="https://wa.me/6282142964242"
           target="_blank"
           class="bg-[#DCEBFA] text-[#002C5F]
                  px-7 py-3 rounded-full font-semibold
-                 hover:bg-[#C7DDF6]
-                 transition"
+                 hover:bg-[#C7DDF6] transition"
         >
           Konsultasi Gratis
         </a>
@@ -96,40 +45,156 @@
           href="/simulasi-kredit"
           class="border border-slate-900
                  px-7 py-3 rounded-full font-semibold
-                 hover:bg-slate-900 hover:text-white
-                 transition"
+                 hover:bg-slate-900 hover:text-white transition"
         >
           Simulasi Kredit
         </a>
       </div>
     </div>
 
-    <!-- IMAGE -->
-    <div class="relative flex justify-center md:justify-end">
-      <img
-        src="/images/palisade.png"
-        alt="Hyundai Palisade"
-        class="w-full max-w-xl
-               scale-110 md:scale-125
-               drop-shadow-[0_45px_90px_rgba(0,0,0,0.28)]"
-        loading="eager"
-      />
+    <!-- SLIDER -->
+    <div class="relative flex justify-center md:justify-end w-full">
+      <div
+        class="relative w-full max-w-xl
+               h-[360px] md:h-[460px]
+               overflow-hidden"
+      >
+        <div
+          id="heroSlider"
+          class="flex h-full transition-transform duration-700 ease-in-out"
+        >
+          <!-- SLIDE -->
+          {[
+            {
+              img: "/images/santafe.png",
+              title: "ALL NEW SANTA FE",
+              badge: "BOOK NOW",
+            },
+            {
+              img: "/images/cartenz-x.png",
+              title: "STARGAZER CARTENZ X",
+              badge: "PREMIUM",
+            },
+            {
+              img: "/images/palisade.png",
+              title: "ALL NEW PALISADE HEV",
+              badge: "PREMIUM SUV",
+            },
+          ].map((slide) => (
+            <div class="relative w-full flex-shrink-0 h-full flex items-center justify-center">
+              <!-- TEXT -->
+              <div class="absolute top-6 right-6 text-right z-20">
+                <p class="text-white/80 font-bold tracking-widest text-sm">
+  HYUNDAI
+</p>
+
+                <h3 class="text-white text-2xl md:text-3xl font-extrabold">
+                  {slide.title}
+                </h3>
+                <span
+  class="inline-block mt-3
+         text-[11px] md:text-xs
+         font-extrabold tracking-widest uppercase
+         px-4 py-1.5
+         text-white
+         rounded-full
+         bg-gradient-to-r from-rose-600 via-red-500 to-orange-500
+         shadow-[0_8px_30px_rgba(239,68,68,0.45)]
+         animate-pulse"
+>
+  {slide.badge}
+</span>
+
+              </div>
+
+              <!-- IMAGE -->
+              <img
+  src={slide.img}
+  alt={slide.title}
+  class="w-full h-full object-contain
+         scale-110 md:scale-125
+         translate-y-4 md:translate-y-6
+         drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
+/>
+
+            </div>
+          ))}
+        </div>
+
+        <!-- DOTS -->
+        <div
+          id="heroDots"
+          class="absolute -bottom-8 left-1/2 -translate-x-1/2
+                 flex gap-2 z-30"
+        >
+          <button class="w-2.5 h-2.5 rounded-full bg-slate-900"></button>
+          <button class="w-2.5 h-2.5 rounded-full bg-slate-400/50"></button>
+          <button class="w-2.5 h-2.5 rounded-full bg-slate-400/50"></button>
+        </div>
+      </div>
     </div>
   </div>
-
-  <script is:inline>
-    const slides = document.querySelectorAll(".hero-slide");
-    let current = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-    }
-
-    setInterval(() => {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    }, 4200);
-  </script>
 </section>
+
+<script is:inline>
+  const slider = document.getElementById("heroSlider");
+  const dots = document.querySelectorAll("#heroDots button");
+  const slides = slider.children;
+  const totalSlides = dots.length;
+
+  let index = 0;
+  let isTransitioning = false;
+
+  // CLONE FIRST SLIDE
+  const firstClone = slides[0].cloneNode(true);
+  slider.appendChild(firstClone);
+
+  function setTransition(enabled) {
+    slider.style.transition = enabled
+      ? "transform 700ms ease-in-out"
+      : "none";
+  }
+
+  function updateDots() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-slate-900", i === index);
+      dot.classList.toggle("bg-slate-400/50", i !== index);
+    });
+  }
+
+  function goToSlide(i) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    setTransition(true);
+    slider.style.transform = `translateX(-${i * 100}%)`;
+    index = i;
+    updateDots();
+  }
+
+  slider.addEventListener("transitionend", () => {
+    // IF AT CLONE
+    if (index === totalSlides) {
+      setTransition(false);
+      slider.style.transform = "translateX(0%)";
+      index = 0;
+      updateDots();
+    }
+    isTransitioning = false;
+  });
+
+  // DOT CLICK
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => goToSlide(i));
+  });
+
+  // AUTO SLIDE
+  setInterval(() => {
+    goToSlide(index + 1);
+  }, 4200);
+
+  // INIT
+  setTransition(false);
+  slider.style.transform = "translateX(0%)";
+</script>
+
