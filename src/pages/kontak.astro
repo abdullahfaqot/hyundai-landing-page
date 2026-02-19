@@ -1,44 +1,47 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Navbar />
+<Layout>
+  <Navbar />
 
-<section class="px-6 py-20 bg-[#f5f1e8] text-slate-900">
-  <div class="max-w-3xl mx-auto text-center">
-    <h1 class="text-4xl font-bold mb-6">Hubungi Kami</h1>
-    <p class="text-slate-600 mb-10">
-      Konsultasi gratis pembelian mobil Hyundai terbaik untuk Anda.
-    </p>
+  <section class="px-6 py-20 bg-[#f5f1e8] text-slate-900">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-6">Hubungi Kami</h1>
+      <p class="text-slate-600 mb-10">
+        Konsultasi gratis pembelian mobil Hyundai terbaik untuk Anda.
+      </p>
 
-    <div class="bg-white p-8 rounded-2xl shadow-lg">
-      <p class="mb-2 font-semibold text-lg">Sales Hyundai Sevilla</p>
+      <div class="bg-white p-8 rounded-2xl shadow-lg">
+        <p class="mb-2 font-semibold text-lg">Sevilla Hyundai Pasteur</p>
 
-      <div class="flex items-center justify-center gap-2 mb-6 text-slate-700">
-        <!-- WhatsApp Icon -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="#25D366"
-          class="w-5 h-5"
+        <div class="flex items-center justify-center gap-2 mb-6 text-slate-700">
+          <!-- WhatsApp Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="#25D366"
+            class="w-5 h-5"
+          >
+            <path
+              d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.95.57 3.84 1.65 5.46L2 22l4.8-1.76a9.87 9.87 0 0 0 5.24 1.51h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.73 14.3c-.24.67-1.2 1.24-1.9 1.4-.47.1-1.08.18-3.14-.67-2.64-1.1-4.34-3.8-4.48-4-.13-.2-1.07-1.43-1.07-2.72s.68-1.93.92-2.2c.24-.26.53-.33.71-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.24.57.82 2 .89 2.15.07.15.11.33.02.53-.09.2-.13.33-.27.5-.13.17-.28.38-.4.51-.13.13-.26.27-.11.54.15.27.68 1.12 1.46 1.82 1.01.9 1.86 1.18 2.13 1.31.27.13.43.11.59-.07.16-.18.68-.8.86-1.07.18-.27.35-.22.59-.13.24.09 1.52.72 1.78.85.26.13.43.2.49.31.07.11.07.67-.18 1.34z"
+            ></path>
+          </svg>
+
+          <span>0896-5759-0865</span>
+        </div>
+
+        <a
+          href="https://wa.me/6289657590865"
+          class="block bg-sky-400 hover:bg-sky-500 text-white py-3 rounded-full font-semibold transition"
         >
-          <path
-            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.95.57 3.84 1.65 5.46L2 22l4.8-1.76a9.87 9.87 0 0 0 5.24 1.51h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.73 14.3c-.24.67-1.2 1.24-1.9 1.4-.47.1-1.08.18-3.14-.67-2.64-1.1-4.34-3.8-4.48-4-.13-.2-1.07-1.43-1.07-2.72s.68-1.93.92-2.2c.24-.26.53-.33.71-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.24.57.82 2 .89 2.15.07.15.11.33.02.53-.09.2-.13.33-.27.5-.13.17-.28.38-.4.51-.13.13-.26.27-.11.54.15.27.68 1.12 1.46 1.82 1.01.9 1.86 1.18 2.13 1.31.27.13.43.11.59-.07.16-.18.68-.8.86-1.07.18-.27.35-.22.59-.13.24.09 1.52.72 1.78.85.26.13.43.2.49.31.07.11.07.67-.18 1.34z"
-          ></path>
-        </svg>
-
-        <span>0821-4296-4242</span>
+          Chat WhatsApp Sekarang
+        </a>
       </div>
-
-      <a
-        href="https://wa.me/6282142964242"
-        class="block bg-sky-400 hover:bg-sky-500 text-white py-3 rounded-full font-semibold transition"
-      >
-        Chat WhatsApp Sekarang
-      </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<Footer />
+  <Footer />
+</Layout>

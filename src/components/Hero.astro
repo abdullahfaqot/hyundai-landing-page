@@ -1,23 +1,34 @@
+---
+import { slide } from "astro:transitions";
+
+---
+
 <section
   id="hero"
-  class="relative overflow-hidden bg-[#F6F1E7] min-h-[85vh] md:min-h-screen flex items-center"
+  class="relative overflow-hidden bg-[#F6F1E7]
+         flex items-center
+         pt-24 pb-16
+         md:pt-0 md:pb-0
+         md:min-h-screen"
 >
-  <!-- BACKGROUND IMAGE -->
+
+
+  <!-- BACKGROUND -->
   <div
     class="absolute inset-0 z-0
            bg-[url('/images/hero-bg.jpg')]
-           bg-cover bg-center bg-no-repeat md:bg-fixed"
+           bg-cover bg-center bg-no-repeat
+           md:bg-fixed"
     aria-hidden="true"
   ></div>
 
-  <!-- GRADIENT KIRI -->
+  <!-- GRADIENT -->
   <div
     class="absolute inset-0 z-10
-           bg-gradient-to-r
+           bg-gradient-to-b md:bg-gradient-to-r
            from-[#F6F1E7]/95
-           via-[#F6F1E7]/80
+           via-[#F6F1E7]/85
            to-transparent"
-    aria-hidden="true"
   ></div>
 
   <!-- CONTENT -->
@@ -25,129 +36,183 @@
     class="relative z-30
            max-w-7xl mx-auto px-6
            grid grid-cols-1 md:grid-cols-2
-           gap-14 items-center w-full"
+           gap-10 md:gap-14
+           items-center w-full"
   >
-   <!-- TEXT --> <div> <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight mb-6 max-w-xl" > Dealer Resmi Hyundai Bandung. </h1> <p class="text-slate-700 text-lg md:text-xl leading-relaxed mb-10 max-w-xl" > Masih bingung pilih mobil yang cocok? Tenang, kami bantu temukan pilihan terbaik sesuai kebutuhan dan anggaran Anda! </p>
 
+    <!-- ================= TEXT ================= -->
+    <div class="text-center md:text-left">
 
-      <div class="flex flex-wrap gap-4">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl xl:text-6xl
+                 font-bold leading-tight mb-4 md:mb-6">
+        Dealer Resmi Hyundai Bandung.
+      </h1>
+
+      <p class="text-slate-700
+                text-base sm:text-lg md:text-xl
+                leading-relaxed mb-6 md:mb-10
+                max-w-xl mx-auto md:mx-0">
+        Temukan kendaraan Hyundai yang dirancang untuk menunjang gaya hidup Anda.
+        Kami hadir dengan layanan profesional, proses mudah, dan penawaran
+        eksklusif untuk Anda.
+      </p>
+
+      <div class="flex flex-col sm:flex-row
+                  justify-center md:justify-start
+                  gap-4">
         <a
-          href="https://wa.me/6282142964242"
+          href="https://wa.me/6289657590865"
           target="_blank"
           class="bg-[#DCEBFA] text-[#002C5F]
-                 px-7 py-3 rounded-full font-semibold
-                 hover:bg-[#C7DDF6] transition"
-        >
+                 px-6 py-3 rounded-full font-semibold
+                 hover:bg-[#C7DDF6] transition
+                 text-center">
           Konsultasi Gratis
         </a>
 
         <a
           href="/simulasi-kredit"
           class="border border-slate-900
-                 px-7 py-3 rounded-full font-semibold
-                 hover:bg-slate-900 hover:text-white transition"
-        >
+                 px-6 py-3 rounded-full font-semibold
+                 hover:bg-slate-900 hover:text-white transition
+                 text-center">
           Simulasi Kredit
         </a>
       </div>
+
     </div>
 
-    <!-- SLIDER -->
+    <!-- ================= SLIDER ================= -->
     <div class="relative flex justify-center md:justify-end w-full">
+
       <div
-        class="relative w-full max-w-xl
-               h-[360px] md:h-[460px]
+        class="relative w-full max-w-sm md:max-w-xl
+               h-[220px] sm:h-[280px] md:h-[460px]
                overflow-hidden"
       >
-        <div
-          id="heroSlider"
-          class="flex h-full transition-transform duration-700 ease-in-out"
-        >
-          <!-- SLIDE -->
-          {[
-            {
-              img: "/images/santafe.png",
-              title: "ALL NEW SANTA FE",
-              badge: "BOOK NOW",
-            },
-            {
-              img: "/images/ioniq5.png",
-              title: "IONIQ 5",
-              badge: "PREMIUM",
-            },
-            {
-              img: "/images/palisade.png",
-              title: "ALL NEW PALISADE HEV",
-              badge: "PREMIUM SUV",
-            },
-          ].map((slide) => (
-            <div class="relative w-full flex-shrink-0 h-full flex items-center justify-center">
-              <!-- TEXT -->
-              <div class="absolute top-6 right-6 text-right z-20">
-                <p class="text-white/80 font-bold tracking-widest text-sm">
-  HYUNDAI
-</p>
 
-                <h3 class="text-white text-2xl md:text-3xl font-extrabold">
-                  {slide.title}
-                </h3>
-                <span
-  class="inline-block mt-3
-         text-[11px] md:text-xs
-         font-extrabold tracking-widest uppercase
-         px-4 py-1.5
-         text-white
-         rounded-full
-         bg-gradient-to-r from-rose-600 via-red-500 to-orange-500
-         shadow-[0_8px_30px_rgba(239,68,68,0.45)]
-         animate-pulse"
+        <div
+  id="heroSlider"
+  class="flex h-full transition-transform duration-700 ease-in-out"
+>
+  {[
+    {
+      img: "/images/santafe.png",
+      title: "ALL NEW SANTA FE",
+      badge: "BOOK NOW",
+    },
+    {
+      img: "/images/ioniq5.png",
+      title: "IONIQ 5",
+      badge: "PREMIUM",
+    },
+    {
+      img: "/images/palisade.png",
+      title: "ALL NEW PALISADE HEV",
+      badge: "PREMIUM SUV",
+    },
+  ].map((slide) => (
+    <div
+      class="relative w-full flex-shrink-0 h-full flex items-center justify-center"
+    >
+      <!-- IMAGE -->
+      <img
+        src={slide.img}
+        alt={slide.title}
+        class="w-full h-full object-contain"
+        loading="eager"
+      />
+
+      <!-- TEXT OVERLAY -->
+      <div
+        class="absolute top-3 right-3 md:top-6 md:right-6 text-right z-20"
+      >
+        <p
+          class="text-white/80 font-bold tracking-widest
+                 text-[9px] md:text-sm"
+        >
+          HYUNDAI
+        </p>
+
+        <h3
+          class="text-white
+                 text-sm md:text-2xl
+                 font-extrabold leading-tight"
+        >
+          {slide.title}
+        </h3>
+
+        {/* BADGE */}
+        <span
+  class={`inline-flex items-center gap-1
+    mt-1 md:mt-3
+    px-2.5 md:px-4 py-1 md:py-1.5
+    text-[9px] md:text-xs
+    font-extrabold tracking-widest uppercase
+    rounded-full
+    backdrop-blur-md border
+    shadow-lg
+    animate-[pulse_3s_ease-in-out_infinite]
+    md:animate-none
+    ${
+      slide.badge === "BOOK NOW" &&
+      "bg-emerald-500/90 border-emerald-300 text-white shadow-emerald-500/40"
+    }
+    ${
+      slide.badge === "PREMIUM" &&
+      "bg-black/70 border-white/20 text-white shadow-black/40"
+    }
+    ${
+      slide.badge === "PREMIUM SUV" &&
+      "bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 text-white shadow-lg shadow-indigo-600/40"
+    }
+  `}
 >
   {slide.badge}
 </span>
 
-              </div>
+      </div>
+    </div>
+  ))}
+</div>
 
-              <!-- IMAGE -->
-              <img
-  src={slide.img}
-  alt={slide.title}
-  class="w-full h-full object-contain
-         scale-110 md:scale-125
-         translate-y-4 md:translate-y-6
-         drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
-/>
-
-            </div>
-          ))}
-        </div>
 
         <!-- DOTS -->
         <div
           id="heroDots"
-          class="absolute -bottom-8 left-1/2 -translate-x-1/2
+          class="absolute -bottom-5 left-1/2 -translate-x-1/2
                  flex gap-2 z-30"
         >
           <button class="w-2.5 h-2.5 rounded-full bg-slate-900"></button>
           <button class="w-2.5 h-2.5 rounded-full bg-slate-400/50"></button>
           <button class="w-2.5 h-2.5 rounded-full bg-slate-400/50"></button>
         </div>
+
       </div>
     </div>
+
   </div>
 </section>
 
 <script is:inline>
   const slider = document.getElementById("heroSlider");
   const dots = document.querySelectorAll("#heroDots button");
+  
+  if (!slider) {
+    console.error("Hero slider not found");
+    throw new Error("Hero slider element is required");
+  }
+  
   const slides = slider.children;
   const totalSlides = dots.length;
 
   let index = 0;
   let isTransitioning = false;
 
-  // CLONE FIRST SLIDE
-  const firstClone = slides[0].cloneNode(true);
-  slider.appendChild(firstClone);
+  if (slides.length > 0) {
+    const firstClone = slides[0].cloneNode(true);
+    slider.appendChild(firstClone);
+  }
 
   function setTransition(enabled) {
     slider.style.transition = enabled
@@ -173,7 +238,6 @@
   }
 
   slider.addEventListener("transitionend", () => {
-    // IF AT CLONE
     if (index === totalSlides) {
       setTransition(false);
       slider.style.transform = "translateX(0%)";
@@ -183,18 +247,14 @@
     isTransitioning = false;
   });
 
-  // DOT CLICK
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => goToSlide(i));
   });
 
-  // AUTO SLIDE
   setInterval(() => {
     goToSlide(index + 1);
   }, 4200);
 
-  // INIT
   setTransition(false);
   slider.style.transform = "translateX(0%)";
 </script>
-

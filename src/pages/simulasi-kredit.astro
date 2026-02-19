@@ -1,124 +1,178 @@
 ---
+import Layout from "../layouts/Layout.astro";
+
 const cars = [
-  { name: "Hyundai The New Creta", price: 350000000 },
-  { name: "Hyundai Stargazer Cartenz X", price: 320000000 },
-  { name: "Hyundai Ioniq 5", price: 750000000 },
-  { name: "Hyundai All New Santa FE", price: 750000000 },
-  { name: "Hyundai Palisade", price: 750000000 },
-  { name: "Hyundai All New Palisade HEV", price: 750000000 },
-  { name: "Hyundai Stargazer", price: 750000000 },
-  { name: "Hyundai Kona EV", price: 750000000 },
+  {
+    name: "Hyundai The New Creta",
+    price: 308800000,
+    priceLabel: "Mulai dari Rp308,8 Juta",
+  },
+  {
+    name: "Hyundai Stargazer Cartenz",
+    price: 277100000,
+    priceLabel: "Mulai dari Rp277,1 Juta",
+  },
+  {
+    name: "Hyundai Ioniq 5",
+    price: 809500000,
+    priceLabel: "Mulai dari Rp809,5 Juta",
+  },
+  {
+    name: "Hyundai All New Santa FE",
+    price: 736800000,
+    priceLabel: "Mulai dari Rp736,8 Juta",
+  },
+  {
+    name: "Hyundai Palisade Diesel",
+    price: 1090700000,
+    priceLabel: "Mulai dari Rp1,09 M",
+  },
+  {
+    name: "Hyundai All New Palisade HEV",
+    price: 1132900000,
+    priceLabel: "Mulai dari Rp1,13 M",
+  },
+  {
+    name: "Hyundai Stargazer",
+    price: 259200000,
+    priceLabel: "Mulai dari Rp259,2 Juta",
+  },
+  {
+    name: "Hyundai Kona Electric",
+    price: 565750000,
+    priceLabel: "Mulai dari Rp565,7 Juta",
+  },
 ];
 ---
 
-<section
-  class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F7F3EA] via-[#F3ECDC] to-[#EFE6D2] px-4 py-20"
->
-  <div
-    class="w-full max-w-xl bg-white/90 backdrop-blur rounded-3xl shadow-2xl p-8"
+<Layout>
+  <section
+    class="min-h-screen flex items-center justify-center
+         bg-gradient-to-br from-[#F7F3EA] via-[#F3ECDC] to-[#EFE6D2]
+         px-4 py-24"
   >
-    <h1 class="text-3xl font-bold text-center mb-6 text-slate-800">
-      Simulasi Kredit Hyundai
-    </h1>
-
-    <form id="simulasiForm" class="space-y-4">
-      <!-- PILIH MOBIL -->
-      <select
-        id="car"
-        class="w-full border border-slate-300 p-3 rounded-lg"
-        required
+    <div
+      class="w-full max-w-2xl
+           bg-white/95 backdrop-blur
+           rounded-[2.5rem]
+           shadow-[0_20px_60px_rgba(0,0,0,0.15)]
+           p-8 sm:p-10 md:p-14"
+    >
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 text-slate-800"
       >
-        <option value="">Pilih Tipe Mobil</option>
-        {cars.map((car) => <option value={car.price}>{car.name}</option>)}
-      </select>
+        Simulasi Kredit Hyundai
+      </h1>
 
-      <!-- DP -->
-      <input
-        id="dp"
-        type="number"
-        min="10"
-        max="90"
-        placeholder="DP (%) contoh: 20"
-        class="w-full border border-slate-300 p-3 rounded-lg"
-        required
-      />
+      <form id="simulasiForm" class="space-y-6">
+        <select
+          id="car"
+          class="w-full border border-slate-300
+               p-4 text-base sm:text-lg
+               rounded-xl
+               focus:ring-2 focus:ring-sky-400 outline-none"
+          required
+        >
+          <option value="">Pilih Tipe Mobil</option>
+          {cars.map((car) => <option value={car.price}>{car.name}</option>)}
+        </select>
 
-      <!-- TENOR -->
-      <select
-        id="tenor"
-        class="w-full border border-slate-300 p-3 rounded-lg"
-        required
-      >
-        <option value="">Pilih Tenor</option>
-        <option value="12">1 Tahun</option>
-        <option value="24">2 Tahun</option>
-        <option value="36">3 Tahun</option>
-        <option value="48">4 Tahun</option>
-        <option value="60">5 Tahun</option>
-        <option value="72">6 Tahun</option>
-        <option value="84">7 Tahun</option>
-      </select>
+        <input
+          id="dp"
+          type="number"
+          min="10"
+          max="90"
+          placeholder="DP (%) contoh: 20"
+          class="w-full border border-slate-300
+               p-4 text-base sm:text-lg
+               rounded-xl
+               focus:ring-2 focus:ring-sky-400 outline-none"
+          required
+        />
 
-      <!-- DATA USER -->
-      <input
-        id="nama"
-        type="text"
-        placeholder="Nama Anda"
-        class="w-full border border-slate-300 p-3 rounded-lg"
-        required
-      />
+        <select
+          id="tenor"
+          class="w-full border border-slate-300
+               p-4 text-base sm:text-lg
+               rounded-xl
+               focus:ring-2 focus:ring-sky-400 outline-none"
+          required
+        >
+          <option value="">Pilih Tenor</option>
+          <option value="12">1 Tahun</option>
+          <option value="24">2 Tahun</option>
+          <option value="36">3 Tahun</option>
+          <option value="48">4 Tahun</option>
+          <option value="60">5 Tahun</option>
+          <option value="72">6 Tahun</option>
+          <option value="84">7 Tahun</option>
+        </select>
 
-      <input
-        id="hp"
-        type="tel"
-        placeholder="No WhatsApp (contoh: 08xxxx)"
-        class="w-full border border-slate-300 p-3 rounded-lg"
-        required
-      />
+        <input
+          id="nama"
+          type="text"
+          placeholder="Nama Anda"
+          class="w-full border border-slate-300
+               p-4 text-base sm:text-lg
+               rounded-xl
+               focus:ring-2 focus:ring-sky-400 outline-none"
+          required
+        />
 
-      <button
-        type="submit"
-        class="w-full bg-sky-400 hover:bg-sky-500 transition
-         text-white py-3 rounded-full font-semibold"
-      >
-        Hitung & Konsultasi
-      </button>
-    </form>
+        <input
+          id="hp"
+          type="tel"
+          placeholder="No WhatsApp (contoh: 08xxxx)"
+          class="w-full border border-slate-300
+               p-4 text-base sm:text-lg
+               rounded-xl
+               focus:ring-2 focus:ring-sky-400 outline-none"
+          required
+        />
 
-    <p id="hasil" class="mt-6 text-center text-lg font-semibold text-slate-800">
-    </p>
-  </div>
-</section>
+        <button
+          type="submit"
+          class="w-full bg-sky-500 hover:bg-sky-600
+               transition-all duration-300
+               text-white text-lg md:text-xl
+               py-4 rounded-full font-semibold
+               hover:scale-[1.02]"
+        >
+          Hitung & Konsultasi
+        </button>
+      </form>
+    </div>
+  </section>
 
-<script is:inline>
-  const form = document.getElementById("simulasiForm");
+  <script is:inline>
+    const form = document.getElementById("simulasiForm");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    const carSelect = document.getElementById("car");
-    const price = Number(carSelect.value);
-    const carName = carSelect.options[carSelect.selectedIndex].text;
+      const carSelect = document.getElementById("car");
+      const price = Number(carSelect.value);
+      const carName = carSelect.options[carSelect.selectedIndex].text;
 
-    const dpPercent = Number(document.getElementById("dp").value);
-    const tenor = Number(document.getElementById("tenor").value);
-    const nama = document.getElementById("nama").value.trim();
-    const hp = document.getElementById("hp").value.trim();
+      const dpPercent = Number(document.getElementById("dp").value);
+      const tenor = Number(document.getElementById("tenor").value);
+      const nama = document.getElementById("nama").value.trim();
+      const hp = document.getElementById("hp").value.trim();
 
-    if (!price || !dpPercent || !tenor || !nama || !hp) {
-      alert("Lengkapi semua data dulu ya 🙏");
-      return;
-    }
+      if (!price || !dpPercent || !tenor || !nama || !hp) {
+        alert("Lengkapi semua data dulu ya 🙏");
+        return;
+      }
 
-    if (dpPercent < 10 || dpPercent > 90) {
-      alert("DP minimal 10% dan maksimal 90%");
-      return;
-    }
+      if (dpPercent < 10 || dpPercent > 90) {
+        alert("DP minimal 10% dan maksimal 90%");
+        return;
+      }
 
-    const dp = price * (dpPercent / 100);
+      const dp = price * (dpPercent / 100);
 
-    const pesan = encodeURIComponent(
-      `Halo Sales Hyundai Sevilla
+      const pesan = encodeURIComponent(
+        `Halo Sevilla Hyundai Pasteur
 
 Saya ingin konsultasi kredit mobil Hyundai dengan detail berikut:
 
@@ -135,8 +189,9 @@ Estimasi angsuran,
 Simulasi terbaik sesuai kebutuhan saya
 
 Terima kasih`,
-    );
+      );
 
-    window.open("https://wa.me/6282142964242?text=" + pesan, "_blank");
-  });
-</script>
+      window.open("https://wa.me/6289657590865?text=" + pesan, "_blank");
+    });
+  </script>
+</Layout>

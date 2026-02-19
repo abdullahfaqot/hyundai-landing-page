@@ -1,196 +1,207 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
 const cars = [
   {
-    name: "Creta N Line",
-    slug: "creta-n-line",
+    name: "The New Creta",
+    slug: "the-new-creta",
     image: "/images/cretan.png",
+    pdf: "/brosur/the-new-creta.pdf",
     isNew: true,
   },
   {
     name: "Stargazer Cartenz X",
     slug: "stargazer-cartenz-x",
     image: "/images/cartenz-x.png",
+    pdf: "/brosur/stargazer-cartenz-x.pdf",
+    isNew: true,
+  },
+  {
+    name: "All New Santa FE",
+    slug: "all-new-santa-fe",
+    image: "/images/santafe.png",
+    pdf: "/brosur/all-new-santa-fe.pdf",
+    isNew: true,
+  },
+  {
+    name: "Kona EV",
+    slug: "kona-ev",
+    image: "/images/konan.png",
+    pdf: "/brosur/kona-ev.pdf",
     isNew: true,
   },
   {
     name: "Stargazer Cartenz",
     slug: "stargazer-cartenz",
     image: "/images/cartenz.png",
+    pdf: "/brosur/stargazer-cartenz.pdf",
     isNew: true,
   },
   {
-    name: "Kona Electric N Line",
-    slug: "kona-electric-n-line",
-    image: "/images/konan.png",
-    isNew: true,
-  },
-  {
-    name: "Santa FE",
-    slug: "santafe",
-    image: "/images/santafe.png",
-    isNew: true,
-  },
-  {
-    name: "Palisade",
-    slug: "palisade",
+    name: "All New Palisade HEV",
+    slug: "all-new-palisade-hev",
     image: "/images/palisade.png",
+    pdf: "/brosur/all-new-palisade-hev.pdf",
     isNew: true,
   },
   {
     name: "Ioniq 5",
     slug: "ioniq-5",
     image: "/images/ioniq5.png",
+    pdf: "/brosur/ioniq-5.pdf",
     isNew: true,
   },
   {
-    name: "Palisade Hybrid",
-    slug: "palisade-hybrid",
+    name: "Palisade",
+    slug: "palisade",
     image: "/images/palisade-hybrid.png",
+    pdf: "/brosur/palisade.pdf",
     isNew: true,
   },
 ];
-
 ---
 
-<Navbar />
+<Layout>
+  <Navbar />
 
-<section class="w-full px-6 py-20 bg-[#E9DFD3]">
-  <div class="max-w-7xl mx-auto">
-    <h1
-  class="relative text-4xl font-bold text-[#002C5F] text-center mb-16"
->
-  Tipe Mobil Hyundai
+  <section class="w-full px-6 py-20 bg-[#E9DFD3]">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="relative text-4xl font-bold text-[#002C5F] text-center mb-16">
+        Tipe Mobil Hyundai
+        <span
+          class="absolute left-1/2 -bottom-4
+                 w-32 h-[3px]
+                 -translate-x-1/2
+                 rounded-full
+                 bg-gradient-to-r
+                 from-transparent via-[#002C5F]/50 to-transparent"
+        ></span>
+      </h1>
 
-  <!-- underline halus -->
-  <span
-    class="absolute left-1/2 -bottom-4
-           w-32 h-[3px]
-           -translate-x-1/2
-           rounded-full
-           bg-gradient-to-r
-           from-transparent via-[#002C5F]/50 to-transparent"
-  ></span>
-</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {
+          cars.map((car) => (
+            <div
+              class="group relative min-h-[420px]
+                     rounded-2xl overflow-hidden
+                     bg-[#E9DFD3]
+                     transition-all duration-300
+                     hover:-translate-y-1 hover:shadow-2xl"
+            >
+              <!-- Overlay -->
+              <div class="absolute inset-0 bg-white/40" />
 
+              <!-- Header -->
+              <div class="relative z-20 p-6">
+                <h3 class="text-[#002C5F] font-extrabold tracking-widest text-lg">
+                  HYUNDAI
+                </h3>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      {cars.map((car) => (
-        <div
-          class="group relative min-h-[380px]
-                 rounded-2xl overflow-hidden
-                 bg-[#E9DFD3]
-                 transition-all duration-300
-                 hover:-translate-y-1 hover:shadow-2xl
-                 cursor-default"
-        >
-          <!-- soft light -->
-          <div class="absolute inset-0 bg-white/40"></div>
+                {car.isNew && (
+                  <span
+                    class="relative inline-flex items-center
+                           mt-3 px-3 py-1
+                           text-xs font-bold tracking-wider
+                           text-white bg-red-600
+                           rounded-full overflow-hidden
+                           shadow-md
+                           animate-pulse-soft"
+                  >
+                    NEW
+                    <span
+                      class="absolute inset-0
+                             -translate-x-full
+                             bg-gradient-to-r
+                             from-transparent via-white/60 to-transparent
+                             animate-shine"
+                    />
+                  </span>
+                )}
+              </div>
 
-          <!-- text -->
-          <div class="relative z-20 p-6">
-            <h3 class="text-[#002C5F] font-extrabold tracking-widest text-lg">
-              HYUNDAI
-            </h3>
+              <!-- Image -->
+              <div
+                class="absolute bottom-20 left-0 right-0
+                       flex justify-center items-end
+                       h-[240px] z-20"
+              >
+                <img
+                  src={car.image}
+                  alt={car.name}
+                  draggable="false"
+                  class="w-[120%] max-w-none
+                         object-contain
+                         transition-transform duration-500 ease-out
+                         group-hover:scale-110 group-hover:-translate-y-3
+                         drop-shadow-[0_35px_45px_rgba(0,0,0,0.35)]
+                         pointer-events-none"
+                />
+              </div>
 
-            {car.isNew && (
-              <span
-  class="relative inline-flex items-center
-         mt-3 px-3 py-1
-         text-xs font-bold tracking-wider
-         text-white bg-red-600
-         rounded-full overflow-hidden
-         shadow-md
-         animate-pulse-soft"
->
-  NEW
+              <!-- Gradient bottom -->
+              <div
+                class="absolute bottom-0 left-0 right-0 h-40
+                       bg-gradient-to-t from-black/25 to-transparent z-10"
+              />
 
-  <!-- shine effect -->
-  <span
-    class="absolute inset-0
-           -translate-x-full
-           bg-gradient-to-r
-           from-transparent via-white/60 to-transparent
-           animate-shine"
-  ></span>
-</span>
+              <!-- Title + Button -->
+              <div
+                class="absolute bottom-6 left-0 right-0
+                       text-center z-20 space-y-3 px-4"
+              >
+                <div class="text-[#002C5F] font-semibold text-lg">
+                  {car.name}
+                </div>
 
-            )}
-          </div>
+                <a
+                  href={car.pdf}
+                  target="_blank"
+                  class="inline-block px-5 py-2.5
+       text-sm font-semibold tracking-wide
+       text-[#6F553F]
+       border border-[#CBBBA8]
+       rounded-xl
+       bg-white/50 backdrop-blur
+       transition-all duration-300
+       hover:bg-[#D6C2A8]
+       hover:text-white
+       hover:border-[#D6C2A8]
+       hover:-translate-y-0.5"
 
-          <!-- image -->
-          <div
-            class="absolute bottom-14 left-0 right-0
-                   flex justify-center items-end
-                   h-[240px] z-20"
-          >
-            <img
-              src={car.image}
-              alt={car.name}
-              draggable="false"
-              class="w-[120%] max-w-none
-                     object-contain
-                     transition-transform duration-500 ease-out
-                     group-hover:scale-110 group-hover:-translate-y-3
-                     drop-shadow-[0_35px_45px_rgba(0,0,0,0.35)]
-                     pointer-events-none"
-            />
-          </div>
+                >
+                  View E-Brochure
 
-          <!-- fade bottom -->
-          <div
-            class="absolute bottom-0 left-0 right-0 h-32
-                   bg-gradient-to-t from-black/25 to-transparent z-10"
-          ></div>
-
-          <!-- name -->
-          <div
-            class="absolute bottom-5 left-0 right-0
-                   text-center text-[#002C5F]
-                   font-semibold text-lg z-20"
-          >
-            {car.name}
-          </div>
-        </div>
-      ))}
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <Footer />
+</Layout>
 
 <style>
-@keyframes shine {
-  0% {
-    transform: translateX(-120%);
+  @keyframes shine {
+    0% { transform: translateX(-120%); }
+    70% { transform: translateX(-120%); }
+    100% { transform: translateX(120%); }
   }
-  70% {
-    transform: translateX(-120%);
-  }
-  100% {
-    transform: translateX(120%);
-  }
-}
 
-@keyframes pulseSoft {
-  0%, 100% {
-    box-shadow: 0 0 0 rgba(220, 38, 38, 0);
+  @keyframes pulseSoft {
+    0%, 100% { box-shadow: 0 0 0 rgba(220, 38, 38, 0); }
+    50% { box-shadow: 0 0 16px rgba(220, 38, 38, 0.6); }
   }
-  50% {
-    box-shadow: 0 0 16px rgba(220, 38, 38, 0.6);
+
+  .animate-shine {
+    animation: shine 3s ease-in-out infinite;
   }
-}
 
-.animate-shine {
-  animation: shine 3s ease-in-out infinite;
-}
-
-.animate-pulse-soft {
-  animation: pulseSoft 1.6s ease-in-out infinite;
-}
+  .animate-pulse-soft {
+    animation: pulseSoft 1.6s ease-in-out infinite;
+  }
 </style>
-
-
-
-
-<Footer />

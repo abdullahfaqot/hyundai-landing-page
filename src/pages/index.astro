@@ -4,6 +4,7 @@ import Hero from "../components/Hero.astro";
 import CarCard from "../components/CarCard.astro";
 import Footer from "../components/Footer.astro";
 import PdfModal from "../components/PdfModal.astro";
+import Layout from "../layouts/Layout.astro";
 
 const cars = [
   {
@@ -127,75 +128,106 @@ const pdfs = [
 ];
 ---
 
-<head>
-  <link rel="preload" as="image" href="/images/promo1.png" />
-  <link rel="preload" as="image" href="/images/promo2.png" />
-  <link rel="preload" as="image" href="/images/promo3.png" />
-  <link rel="preload" as="image" href="/images/promo4.png" />
-  <link rel="preload" as="image" href="/images/promo5.png" />
-  <link rel="preload" as="image" href="/images/promo6.png" />
-</head>
+<Layout>
+  <!-- PRELOAD PINDAH KE SINI -->
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/images/promo1.png" />
+    <link rel="preload" as="image" href="/images/promo2.png" />
+    <link rel="preload" as="image" href="/images/promo3.png" />
+    <link rel="preload" as="image" href="/images/promo4.png" />
+    <link rel="preload" as="image" href="/images/promo5.png" />
+    <link rel="preload" as="image" href="/images/promo6.png" />
+  </Fragment>
 
-<Navbar />
-<Hero />
+  <Navbar />
+  <Hero />
 
-<section class="px-6 py-12">
-  <div
-    class="grid grid-cols-1
+  <section class="px-6 py-12">
+    <div
+      class="grid grid-cols-1
            sm:grid-cols-2
            lg:grid-cols-4
            gap-6
            max-w-7xl mx-auto"
-  >
-    {
-      cars.map((car) => (
-        <CarCard
-          name={car.name}
-          slug={car.slug}
-          image={car.image}
-          gradient={car.gradient}
-          isNew={car.isNew}
-        />
-      ))
-    }
-  </div>
-</section>
-
-<section class="px-6 py-20 bg-white text-slate-900">
-  <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
-    PROSES MUDAH & CEPAT
-  </h2>
-
-  <p class="text-center max-w-3xl mx-auto text-slate-600 mb-12">
-    Ingin punya mobil Hyundai impian tanpa repot? Kami bantu prosesnya jadi
-    lebih mudah dan cepat. Yuk, konsultasi sekarang!
-  </p>
-
-  <div
-    class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
-  >
-    {
-      testimonials.map((item) => (
-        <button
-          class="overflow-hidden rounded-xl shadow-md hover:scale-105 transition"
-          onclick={`openModal('${item.image}')`}
-        >
-          <img
-            src={item.image}
-            alt="Testimoni Hyundai"
-            loading="lazy"
-            class="w-full h-full object-cover"
+    >
+      {
+        cars.map((car) => (
+          <CarCard
+            name={car.name}
+            slug={car.slug}
+            image={car.image}
+            gradient={car.gradient}
+            isNew={car.isNew}
           />
-        </button>
-      ))
-    }
-  </div>
-</section>
+        ))
+      }
+    </div>
+  </section>
 
-<section class="px-6 py-20 bg-white">
-  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-    Promo Hyundai Bulan Ini
-  </h2>
+  <section class="px-6 py-20 bg-white text-slate-900">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+      PROSES MUDAH & CEPAT
+    </h2>
+
+    <p class="text-center max-w-3xl mx-auto text-slate-600 mb-12">
+      Miliki Hyundai impian Anda tanpa ribet. Kami siap membantu dari
+      konsultasi, simulasi kredit, hingga unit siap dikirim ke rumah Anda.
+    </p>
+
+    <div class="max-w-7xl mx-auto">
+      <!-- MOBILE AUTO SLIDER -->
+      <div class="md:hidden overflow-hidden">
+        <div
+          id="testiSlider"
+          class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth"
+        >
+          {
+            testimonials.map((item) => (
+              <button
+                class="flex-shrink-0 w-[85%] snap-center
+                     overflow-hidden rounded-xl shadow-md"
+                onclick={`openModal('${item.image}')`}
+              >
+                <img
+                  src={item.image}
+                  alt="Testimoni Hyundai"
+                  class="w-full h-[300px] object-cover"
+                />
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- DESKTOP GRID -->
+      <div class="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {
+          testimonials.map((item) => (
+            <button
+              class="overflow-hidden rounded-xl shadow-md hover:scale-105 transition"
+              onclick={`openModal('${item.image}')`}
+            >
+              <img
+                src={item.image}
+                alt="Testimoni Hyundai"
+                class="w-full h-[280px] object-cover"
+              />
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 bg-white">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+      Booking Unit Hari Ini, Harga Masih Spesial!
+    </h2>
+    <p class="text-center text-slate-600 max-w-2xl mx-auto text-lg">
+      Konsultasikan pilihanmu dengan kami tanpa ragu. dan dapatkan unit impianmu
+      dengan proses yang mudah dan cepat .
+    </p>
+  </section>
 
   <div class="relative max-w-7xl mx-auto overflow-hidden">
     <div
@@ -218,7 +250,7 @@ const pdfs = [
 
     <div id="promoDots" class="flex justify-center gap-2 mt-6"></div>
   </div>
-</section>
+</Layout>
 
 <section class="px-6 py-20 bg-white">
   <div
@@ -459,17 +491,17 @@ const pdfs = [
             </span>
           </li>
 
-          <!-- Instagram -->
           <li class="flex items-center gap-4">
             <svg
-              class="w-6 h-6 text-pink-500"
+              class="w-6 h-6 text-pink-500 shrink-0"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
               <path
-                d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm5.5-3a1 1 0 1 1-1 1 1 1 0 0 1 1-1zM7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"
+                d="M7.75 2C4.56 2 2 4.56 2 7.75v8.5C2 19.44 4.56 22 7.75 22h8.5C19.44 22 22 19.44 22 16.25v-8.5C22 4.56 19.44 2 16.25 2h-8.5zm4.25 5a5 5 0 110 10 5 5 0 010-10zm5.5-1.25a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"
               ></path>
             </svg>
+
             <span class="flex-1">
               Instagram
               <strong class="block text-lg text-slate-900 leading-tight">
@@ -696,6 +728,54 @@ const pdfs = [
   }
 
   (window as any).closePdf = closePdf;
+</script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.getElementById("testiSlider");
+    if (!slider) return;
+
+    const slides = Array.from(slider.children);
+    let index = 0;
+    let intervalId = null;
+
+    function goToSlide(i) {
+      const slide = slides[i];
+      if (!slide) return;
+
+      slider.scrollTo({
+        left: slide.offsetLeft - 16,
+        behavior: "smooth",
+      });
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      goToSlide(index);
+    }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      intervalId = setInterval(nextSlide, 4000);
+    }
+
+    function stopAutoSlide() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    }
+
+    slider.addEventListener("touchstart", stopAutoSlide);
+    slider.addEventListener("touchend", startAutoSlide);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopAutoSlide();
+      else startAutoSlide();
+    });
+
+    startAutoSlide();
+  });
 </script>
 
 <PdfModal />

@@ -1,100 +1,105 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Navbar />
+<Layout>
+  <Navbar />
 
-<section
-  class="px-6 py-24
-         bg-gradient-to-br from-[#F7F3EA] via-[#F3ECDC] to-[#EFE6D2]"
->
-  <div class="max-w-3xl mx-auto text-center">
-    <h1 class="relative text-4xl font-bold mb-10 text-slate-800 text-center">
-      Booking Test Drive
+  <section
+    class="px-4 sm:px-6 py-20 sm:py-24
+           bg-gradient-to-br from-[#F7F3EA] via-[#F3ECDC] to-[#EFE6D2]"
+  >
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="relative text-3xl sm:text-4xl font-bold mb-10 text-slate-800">
+        Booking Test Drive
 
-      <!-- underline halus -->
-      <span
-        class="absolute left-1/2 -bottom-4
-           w-24 h-[3px]
-           -translate-x-1/2
-           rounded-full
-           bg-gradient-to-r
-           from-transparent via-slate-400 to-transparent"
-      ></span>
-    </h1>
+        <span
+          class="absolute left-1/2 -bottom-4
+                 w-24 h-[3px]
+                 -translate-x-1/2
+                 rounded-full
+                 bg-gradient-to-r
+                 from-transparent via-slate-400 to-transparent"
+        ></span>
+      </h1>
 
-    <p class="text-slate-600 mb-10">
-      Rasakan langsung kenyamanan dan performa mobil Hyundai pilihan Anda.
-    </p>
+      <p class="text-slate-600 mb-10 text-sm sm:text-base">
+        Rasakan langsung kenyamanan dan performa mobil Hyundai pilihan Anda.
+      </p>
 
-    <div class="bg-white text-slate-900 p-8 rounded-2xl shadow-xl">
-      <form
-        onsubmit="event.preventDefault(); bookingTestDrive();"
-        class="space-y-4"
-      >
-        <input
-          class="w-full border border-slate-300 p-3 rounded-lg"
-          id="nama"
-          placeholder="Nama Anda"
-        />
-
-        <input
-          class="w-full border border-slate-300 p-3 rounded-lg"
-          id="hp"
-          placeholder="No WhatsApp"
-        />
-
-        <!-- DROPDOWN TIPE MOBIL -->
-        <select
-          id="mobil"
-          class="w-full border border-slate-300 p-3 rounded-lg"
+      <div class="bg-white text-slate-900 p-6 sm:p-8 rounded-2xl shadow-xl">
+        <form
+          onsubmit="event.preventDefault(); bookingTestDrive();"
+          class="space-y-4"
         >
-          <option value="">Pilih Tipe Mobil</option>
-          <option value="Hyundai Creta">Hyundai Creta</option>
-          <option value="Hyundai Creta N Line">Hyundai Creta N Line</option>
-          <option value="Hyundai Stargazer">Hyundai Stargazer</option>
-          <option value="Hyundai Stargazer X">Hyundai Stargazer X</option>
-          <option value="Hyundai Palisade">Hyundai Palisade</option>
-          <option value="Hyundai Ioniq 5">Hyundai Ioniq 5</option>
-          <option value="Hyundai Ioniq 6">Hyundai Ioniq 6</option>
-          <option value="Hyundai Kona EV">Hyundai Kona EV</option>
-        </select>
+          <input
+            class="w-full border border-slate-300 p-3 rounded-lg"
+            id="nama"
+            placeholder="Nama Anda"
+          />
 
-        <input
-          class="w-full border border-slate-300 p-3 rounded-lg"
-          id="kota"
-          placeholder="Kota / Dealer"
-        />
+          <input
+            class="w-full border border-slate-300 p-3 rounded-lg"
+            id="hp"
+            placeholder="No WhatsApp"
+          />
 
-        <button
-          class="w-full
-                 bg-sky-400 text-white
-                 py-3 rounded-full font-semibold
-                 hover:bg-sky-500 hover:scale-105
-                 transition shadow-lg"
-        >
-          Booking Test Drive
-        </button>
-      </form>
+          <select
+            id="mobil"
+            class="w-full border border-slate-300 p-3 rounded-lg"
+          >
+            <option value="">Pilih Tipe Mobil</option>
+            <option value="Hyundai Creta">Hyundai Creta</option>
+            <option value="Hyundai Stargazer Cartenz"
+              >Hyundai Stargazer Cartenz</option
+            >
+            <option value="Hyundai All New Santa Fe"
+              >Hyundai All New Santa Fe</option
+            >
+            <option value="Hyundai All New Palisade HEV"
+              >Hyundai All New Palisade HEV</option
+            >
+            <option value="Hyundai Kona EV">Hyundai Kona EV</option>
+          </select>
+
+          <input
+            class="w-full border border-slate-300 p-3 rounded-lg"
+            id="kota"
+            placeholder="Kota / Dealer"
+          />
+
+          <button
+            class="w-full
+                   bg-sky-400 text-white
+                   py-3 rounded-full font-semibold
+                   hover:bg-sky-500 hover:scale-105
+                   transition shadow-lg"
+          >
+            Booking Test Drive
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script is:inline>
-  function bookingTestDrive() {
-    const nama = document.getElementById("nama").value.trim();
-    const hp = document.getElementById("hp").value.trim();
-    const mobil = document.getElementById("mobil").value;
-    const kota = document.getElementById("kota").value.trim();
+  <Footer />
 
-    if (!nama || !hp || !mobil || !kota) {
-      alert("Lengkapi semua data dulu ya 🙏");
-      return;
-    }
+  <script is:inline>
+    function bookingTestDrive() {
+      const nama = document.getElementById("nama").value.trim();
+      const hp = document.getElementById("hp").value.trim();
+      const mobil = document.getElementById("mobil").value;
+      const kota = document.getElementById("kota").value.trim();
 
-    const pesan = encodeURIComponent(
-      `Halo Sales Hyundai Sevilla 👋
+      if (!nama || !hp || !mobil || !kota) {
+        alert("Lengkapi semua data dulu ya");
+        return;
+      }
+
+      const pesan = encodeURIComponent(
+        `Halo Sevilla Hyundai Pasteur 
 
 Saya ingin booking test drive dengan detail berikut:
 
@@ -104,11 +109,10 @@ Mobil: ${mobil}
 Kota / Dealer: ${kota}
 
 Mohon info jadwal test drive yang tersedia.
-Terima kasih 🙏`,
-    );
+Terima kasih`,
+      );
 
-    window.open("https://wa.me/6282142964242?text=" + pesan, "_blank");
-  }
-</script>
-
-<Footer />
+      window.open("https://wa.me/6289657590865?text=" + pesan, "_blank");
+    }
+  </script>
+</Layout>

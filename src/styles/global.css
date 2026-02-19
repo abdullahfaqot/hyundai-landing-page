@@ -1,4 +1,5 @@
 /* @import "tailwindcss"; */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -28,7 +29,7 @@
 
 /* hover halus */
 .nav-link:hover {
-  color: #a3e635;
+  color: #35cee6;
   /* lime-400 */
   transform: translateY(-1px);
   opacity: 0.95;
@@ -207,7 +208,17 @@ body {
   z-index: 2;
 }
 
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}
+
+
 
 
 /* global.css */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");

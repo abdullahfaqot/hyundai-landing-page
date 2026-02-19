@@ -1,34 +1,41 @@
+---
+
+---
+
 <header
   id="navbar"
-  class="absolute top-0 left-0 w-full
-    z-50
-    bg-transparent
-    text-slate-900
-    transition-all duration-300
-    hover:bg-white/95 hover:backdrop-blur hover:shadow-lg"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
 >
-  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-    <!-- Logo -->
-    <a href="/" class="flex items-center select-none">
+  <nav
+    id="navInner"
+    class="max-w-7xl mx-auto flex items-center justify-between px-6 py-5 transition-all duration-300"
+  >
+    <!-- LOGO -->
+    <a href="/" class="flex items-center select-none z-50">
       <img
+        id="logo"
         src="/images/logo-hyundai-official.png"
         alt="Hyundai Official Logo"
-        class="h-9 w-auto"
+        class="h-9 w-auto transition-all duration-300"
       />
     </a>
 
-    <!-- Menu -->
-    <ul class="hidden md:flex items-center gap-8 font-medium">
+    <!-- DESKTOP MENU -->
+    <ul
+      id="desktopMenu"
+      class="hidden md:flex items-center gap-8 font-medium transition-all duration-300"
+    >
       <li><a href="/" class="nav-link">Beranda</a></li>
       <li><a href="/tipe-mobil" class="nav-link">Tipe Mobil</a></li>
       <li><a href="/daftar-harga" class="nav-link">Daftar Harga</a></li>
       <li><a href="/simulasi-kredit" class="nav-link">Simulasi Kredit</a></li>
 
+      <!-- Dropdown -->
       <li class="relative group">
         <button class="flex items-center gap-1 nav-link">
           More
           <svg
-            class="w-4 h-4 mt-1"
+            class="w-4 h-4 mt-1 transition-transform group-hover:rotate-180"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
@@ -38,14 +45,12 @@
           </svg>
         </button>
 
-        <!-- Dropdown -->
         <ul
           class="absolute top-full left-0 mt-3 w-48
-                 bg-white text-slate-900
-                 rounded-xl shadow-xl border border-black/5
+                 bg-white text-slate-800 rounded-xl shadow-xl border border-black/5
                  opacity-0 invisible
                  group-hover:opacity-100 group-hover:visible
-                 transition-all"
+                 transition-all duration-200"
         >
           <li>
             <a href="/test-drive" class="block px-4 py-3 hover:bg-slate-100"
@@ -66,28 +71,221 @@
       </li>
     </ul>
 
-    <!-- CTA -->
-    <a
-      href="https://wa.me/6282142964242"
-      target="_blank"
-      class="hidden md:inline-block
-        bg-sky-200 text-sky-900
-        px-5 py-2 rounded-full font-semibold
-        transition-all
-        hover:bg-sky-300 hover:scale-105"
+    <!-- CTA WRAPPER -->
+    <div id="ctaWrapper" class="hidden md:flex items-center">
+      <a
+        href="https://wa.me/6289657590865"
+        target="_blank"
+        id="ctaBtn"
+        class="px-6 py-2.5 rounded-full font-semibold
+           bg-sky-500 text-white
+           shadow-md shadow-sky-500/30
+           hover:bg-sky-600 hover:shadow-lg
+           transition-all duration-300"
+      >
+        Konsultasi Gratis
+      </a>
+    </div>
+
+    <!-- HAMBURGER -->
+    <button
+      id="menuBtn"
+      class="md:hidden flex flex-col gap-1.5 z-50"
+      aria-label="Open Menu"
     >
-      Konsultasi Gratis
-    </a>
+      <span class="bar w-7 h-0.5 block transition-all duration-300"></span>
+      <span class="bar w-7 h-0.5 block transition-all duration-300"></span>
+      <span class="bar w-7 h-0.5 block transition-all duration-300"></span>
+    </button>
   </nav>
 </header>
+
+<!-- MOBILE MENU -->
+<div
+  id="mobileMenu"
+  class="fixed top-0 right-0 h-screen w-80
+         translate-x-full
+         transition-all duration-500 ease-[cubic-bezier(.77,0,.18,1)]
+         z-[999] p-10 shadow-2xl overflow-hidden"
+>
+  <!-- BACKGROUND LAYER -->
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-[#F8F3E8] via-[#F3EBDD] to-[#EADCC8]"
+  >
+  </div>
+
+  <!-- GLOW EFFECT -->
+  <div
+    class="absolute -top-32 -right-32 w-96 h-96 bg-sky-400/30 blur-3xl rounded-full"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 w-72 h-72 bg-blue-500/20 blur-3xl rounded-full"
+  >
+  </div>
+
+  <!-- CONTENT -->
+  <div class="relative z-10">
+    <div class="flex justify-end mb-12">
+      <button
+        id="closeBtn"
+        class="text-3xl hover:rotate-90 transition-transform duration-300"
+      >
+        &times;
+      </button>
+    </div>
+
+    <ul
+      id="mobileLinks"
+      class="flex flex-col gap-8 text-lg font-semibold text-slate-800"
+    >
+      <li class="mobile-item"><a href="/">Beranda</a></li>
+      <li class="mobile-item"><a href="/tipe-mobil">Tipe Mobil</a></li>
+      <li class="mobile-item"><a href="/daftar-harga">Daftar Harga</a></li>
+      <li class="mobile-item">
+        <a href="/simulasi-kredit">Simulasi Kredit</a>
+      </li>
+      <li class="mobile-item"><a href="/test-drive">Test Drive</a></li>
+      <li class="mobile-item"><a href="/syarat-kredit">Syarat Kredit</a></li>
+      <li class="mobile-item"><a href="/kontak">Kontak</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div
+  id="overlay"
+  class="fixed inset-0 bg-black/40 backdrop-blur-sm
+         opacity-0 invisible
+         transition-all duration-400 z-[998]"
+>
+</div>
+
+<!-- SCRIPT -->
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.getElementById("navbar");
+    const desktopMenu = document.getElementById("desktopMenu");
+    const bars = document.querySelectorAll(".bar");
+
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const overlay = document.getElementById("overlay");
+
+    const isDesktop = () => window.innerWidth >= 768;
+
+    /* =========================
+       STATE: TRANSPARENT
+    ========================= */
+    function setTransparent() {
+      navbar.classList.remove("bg-white", "shadow-md");
+      navbar.classList.add("bg-transparent");
+
+      // desktop text putih
+      if (isDesktop()) {
+        desktopMenu?.classList.remove("nav-dark");
+        desktopMenu?.classList.add("nav-light");
+      }
+
+      // hamburger SELALU GELAP (mobile & desktop)
+      bars.forEach((bar) => {
+        bar.classList.remove("bg-white");
+        bar.classList.add("bg-slate-800");
+      });
+    }
+
+    /* =========================
+       STATE: SCROLLED
+    ========================= */
+    function setScrolled() {
+      navbar.classList.remove("bg-transparent");
+      navbar.classList.add("bg-white", "shadow-md");
+
+      desktopMenu?.classList.remove("nav-light");
+      desktopMenu?.classList.add("nav-dark");
+
+      bars.forEach((bar) => {
+        bar.classList.remove("bg-white");
+        bar.classList.add("bg-slate-800");
+      });
+    }
+
+    /* =========================
+       SCROLL HANDLER
+    ========================= */
+    function handleScroll() {
+      if (window.scrollY > 50) {
+        setScrolled();
+      } else {
+        setTransparent();
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    /* =========================
+       INIT
+    ========================= */
+    handleScroll();
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+    function openMenu() {
+      mobileMenu.classList.remove("translate-x-full");
+      overlay.classList.remove("opacity-0", "invisible");
+      document.body.classList.add("overflow-hidden");
+
+      const items = document.querySelectorAll(".mobile-item");
+
+      items.forEach((item, i) => {
+        item.style.opacity = "0";
+        item.style.transform = "translateX(40px)";
+        setTimeout(() => {
+          item.style.transition = "all 400ms ease";
+          item.style.opacity = "1";
+          item.style.transform = "translateX(0)";
+        }, i * 80);
+      });
+
+      bars[0].classList.add("rotate-45", "translate-y-2");
+      bars[1].classList.add("opacity-0");
+      bars[2].classList.add("-rotate-45", "-translate-y-2");
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.add("translate-x-full");
+      overlay.classList.add("opacity-0", "invisible");
+      document.body.classList.remove("overflow-hidden");
+
+      const items = document.querySelectorAll(".mobile-item");
+      items.forEach((item) => {
+        item.style.opacity = "0";
+        item.style.transform = "translateX(40px)";
+      });
+
+      bars[0].classList.remove("rotate-45", "translate-y-2");
+      bars[1].classList.remove("opacity-0");
+      bars[2].classList.remove("-rotate-45", "-translate-y-2");
+    }
+
+    menuBtn?.addEventListener("click", openMenu);
+    closeBtn?.addEventListener("click", closeMenu);
+    overlay?.addEventListener("click", closeMenu);
+
+    /* =========================
+       RESIZE FIX
+    ========================= */
+    window.addEventListener("resize", handleScroll);
+  });
+</script>
+
 <style is:global>
   .nav-link {
     position: relative;
     padding: 0.25rem 0;
-    color: #0f172a; /* slate-900 */
-    transition:
-      color 200ms ease,
-      font-weight 200ms ease;
+    transition: all 200ms ease;
   }
 
   .nav-link::after {
@@ -97,18 +295,70 @@
     bottom: -6px;
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, #e5ded3, #cfc6b8);
+    background: linear-gradient(to right, #38bdf8, #0ea5e9);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 250ms ease;
   }
 
-  .nav-link:hover {
-    color: #475569; /* slate-600 */
-    font-weight: 600;
-  }
-
   .nav-link:hover::after {
     transform: scaleX(1);
+  }
+  /* NAV TEXT COLOR */
+  .nav-light .nav-link {
+    color: white;
+  }
+
+  .nav-dark .nav-link {
+    color: #1e293b; /* slate-800 */
+  }
+
+  /* hover tetap aman */
+  .nav-dark .nav-link:hover {
+    color: #0284c7; /* sky-600 */
+  }
+  /* FORCE NAVBAR TEXT BLACK */
+  #navbar .nav-link {
+    color: #1e293b !important; /* slate-800 */
+  }
+
+  /* hover tetap */
+  #navbar .nav-link:hover {
+    color: #0284c7 !important; /* sky-600 */
+  }
+
+  #mobileMenu {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.6);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .mobile-item a {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .mobile-item a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #38bdf8, #0ea5e9);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms ease;
+  }
+
+  .mobile-item a:hover::after {
+    transform: scaleX(1);
+  }
+
+  .mobile-item a:hover {
+    color: #0284c7;
+    transform: translateX(6px);
   }
 </style>
