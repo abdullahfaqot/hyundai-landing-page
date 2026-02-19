@@ -60,6 +60,13 @@ const cars = [
     pdf: "/brosur/palisade.pdf",
     isNew: true,
   },
+  {
+    name: "Stargazer",
+    slug: "stargazer",
+    image: "/images/stargazer.png",
+    pdf: "/brosur/stargazer.pdf",
+    isNew: true,
+  },
 ];
 ---
 
@@ -68,6 +75,7 @@ const cars = [
 
   <section class="w-full px-6 py-20 bg-[#E9DFD3]">
     <div class="max-w-7xl mx-auto">
+      
       <h1 class="relative text-4xl font-bold text-[#002C5F] text-center mb-16">
         Tipe Mobil Hyundai
         <span
@@ -90,7 +98,8 @@ const cars = [
                      transition-all duration-300
                      hover:-translate-y-1 hover:shadow-2xl"
             >
-              <!-- Overlay -->
+              
+              <!-- Soft Overlay -->
               <div class="absolute inset-0 bg-white/40" />
 
               <!-- Header -->
@@ -121,9 +130,9 @@ const cars = [
                 )}
               </div>
 
-              <!-- Image -->
+              <!-- IMAGE (Dinaikkan sedikit) -->
               <div
-                class="absolute bottom-20 left-0 right-0
+                class="absolute bottom-28 left-0 right-0
                        flex justify-center items-end
                        h-[240px] z-20"
               >
@@ -140,45 +149,46 @@ const cars = [
                 />
               </div>
 
-              <!-- Gradient bottom -->
+              <!-- Bottom Gradient -->
               <div
-                class="absolute bottom-0 left-0 right-0 h-40
+                class="absolute bottom-0 left-0 right-0 h-44
                        bg-gradient-to-t from-black/25 to-transparent z-10"
               />
 
-              <!-- Title + Button -->
+              <!-- TITLE + BUTTON (Diberi jarak lebih lega) -->
               <div
-                class="absolute bottom-6 left-0 right-0
-                       text-center z-20 space-y-3 px-4"
+                class="absolute bottom-8 left-0 right-0
+                       text-center z-20
+                       space-y-4 px-6 pt-6"
               >
-                <div class="text-[#002C5F] font-semibold text-lg">
+                <div class="text-[#002C5F] font-semibold text-lg tracking-wide">
                   {car.name}
                 </div>
 
                 <a
                   href={car.pdf}
                   target="_blank"
-                  class="inline-block px-5 py-2.5
-       text-sm font-semibold tracking-wide
-       text-[#6F553F]
-       border border-[#CBBBA8]
-       rounded-xl
-       bg-white/50 backdrop-blur
-       transition-all duration-300
-       hover:bg-[#D6C2A8]
-       hover:text-white
-       hover:border-[#D6C2A8]
-       hover:-translate-y-0.5"
-
+                  class="inline-block px-6 py-2.5
+                         text-sm font-semibold tracking-wide
+                         text-[#6F553F]
+                         border border-[#CBBBA8]
+                         rounded-xl
+                         bg-white/60 backdrop-blur
+                         transition-all duration-300
+                         hover:bg-[#D6C2A8]
+                         hover:text-white
+                         hover:border-[#D6C2A8]
+                         hover:-translate-y-0.5"
                 >
                   View E-Brochure
-
                 </a>
               </div>
+
             </div>
           ))
         }
       </div>
+
     </div>
   </section>
 

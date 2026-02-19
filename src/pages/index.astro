@@ -39,38 +39,6 @@ const cars = [
     gradient: "from-emerald-900 via-green-800 to-green-700",
     isNew: true,
   },
-  {
-    name: "Stargazer Cartenz",
-    slug: "stargazer-cartenz",
-    image: "/images/cartenz.png",
-    pdf: "/brosur/stargazer-cartenz.pdf",
-    gradient: "from-teal-900 via-teal-800 to-green-700",
-    isNew: true,
-  },
-  {
-    name: "All New Palisade HEV",
-    slug: "all-new-palisade-hev",
-    image: "/images/palisade.png",
-    pdf: "/brosur/all-new-palisade-hev.pdf",
-    gradient: "from-green-900 via-green-800 to-emerald-700",
-    isNew: true,
-  },
-  {
-    name: "Ioniq 5",
-    slug: "ioniq-5",
-    image: "/images/ioniq5.png",
-    pdf: "/brosur/ioniq-5.pdf",
-    gradient: "from-green-900 via-green-800 to-emerald-700",
-    isNew: true,
-  },
-  {
-    name: "Palisade",
-    slug: "palisade",
-    image: "/images/palisade-hybrid.png",
-    pdf: "/brosur/palisade.pdf",
-    gradient: "from-green-900 via-green-800 to-emerald-700",
-    isNew: true,
-  },
 ];
 
 const testimonials = [
@@ -142,25 +110,46 @@ const pdfs = [
   <Navbar />
   <Hero />
 
-  <section class="px-6 py-12">
-    <div
-      class="grid grid-cols-1
-           sm:grid-cols-2
-           lg:grid-cols-4
-           gap-6
-           max-w-7xl mx-auto"
-    >
-      {
-        cars.map((car) => (
-          <CarCard
-            name={car.name}
-            slug={car.slug}
-            image={car.image}
-            gradient={car.gradient}
-            isNew={car.isNew}
-          />
-        ))
-      }
+  <section class="px-4 sm:px-6 py-10 sm:py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <!-- HEADER -->
+      <div class="flex justify-between items-center mb-6 sm:mb-10">
+        <h2 class="text-xl sm:text-3xl font-bold text-[#002C5F]">
+          Tipe Mobil Hyundai
+        </h2>
+
+        <a
+          href="/tipe-mobil"
+          class="relative text-xs sm:text-sm font-semibold text-[#002C5F] group"
+        >
+          Lihat Semua →
+
+          <span
+            class="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#002C5F]
+           transition-all duration-300
+           group-hover:w-full hidden sm:block"
+          ></span>
+        </a>
+      </div>
+
+      <!-- GRID -->
+      <div
+        class="grid
+             grid-cols-2 sm:grid-cols-2 lg:grid-cols-4
+             gap-3 sm:gap-6"
+      >
+        {
+          cars.map((car) => (
+            <CarCard
+              name={car.name}
+              slug={car.slug}
+              image={car.image}
+              gradient={car.gradient}
+              isNew={car.isNew}
+            />
+          ))
+        }
+      </div>
     </div>
   </section>
 
