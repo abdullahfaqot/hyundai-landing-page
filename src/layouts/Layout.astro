@@ -2,13 +2,34 @@
 import "../styles/global.css";
 ---
 
-<html lang="id">
+<!doctype html>
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- IMPORTANT: cegah Samsung Force Dark -->
+    <meta name="color-scheme" content="light only" />
+
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Theme color (biar address bar tetap terang) -->
+    <meta name="theme-color" content="#ffffff" />
+
     <title>Dealer Hyundai Bandung</title>
+
+    <!-- Prevent auto dark mode -->
+    <style>
+      html {
+        color-scheme: light;
+        background-color: #ffffff;
+      }
+    </style>
+
+    <slot name="head" />
   </head>
-  <body class="bg-white text-slate-900 overflow-x-hidden">
+
+  <body class="bg-white text-slate-900 overflow-x-hidden antialiased">
     <slot />
   </body>
 </html>
