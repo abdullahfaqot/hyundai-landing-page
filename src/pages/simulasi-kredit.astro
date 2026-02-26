@@ -26,12 +26,13 @@ import Layout from "../layouts/Layout.astro";
           <option value="">Pilih Tipe / Varian</option>
         </select>
 
-        <!-- DP INPUT (BUKAN DROPDOWN) -->
+        <!-- DP -->
         <input
           type="number"
           id="dp"
           placeholder="Masukkan DP (%) minimal 15"
-          min="20"
+          min="15"
+          max="90"
           class="w-full border p-3 rounded-xl"
           required
         />
@@ -76,51 +77,44 @@ import Layout from "../layouts/Layout.astro";
 
   <script is:inline>
     document.addEventListener("DOMContentLoaded", function () {
-      // ===== DATA SESUAI BROSUR =====
       const cars = {
         "The All New KONA Electric": {
-          "Signature Long": 690050000,
+          "N Line": 690050000,
+          "Signature Long": 669050000,
           "Signature Standard": 652150000,
           "Prime Long": 635000000,
           "Prime Standard": 584000000,
           Style: 565750000,
         },
-
         "IONIQ 5": {
           "Signature Long": 926100000,
           "Signature Standard": 874400000,
           "Prime Long": 852000000,
           "Prime Standard": 809500000,
         },
-
         "All New PALISADE HEV": {
           "Calligraphy AWD": 1392800000,
           "Calligraphy FWD": 1305700000,
           "Signature FWD": 1132900000,
         },
-
         "PALISADE DIESEL 2.2 CRDi": {
           "Signature XRT": 1119600000,
           Signature: 1090700000,
         },
-
         "All New SANTA FE HEV": {
           "Calligraphy XRT": 933400000,
           Calligraphy: 915700000,
           Prime: 828400000,
         },
-
         "The New TUCSON": {
           HEV: 767600000,
           Gasoline: 653000000,
         },
-
         "STARGAZER Cartenz X": {
           Prime: 401700000,
           Style: 384700000,
           Trend: 371250000,
         },
-
         "STARGAZER Cartenz": {
           Prime: 359300000,
           "Prime Non HSS": 349300000,
@@ -130,7 +124,6 @@ import Layout from "../layouts/Layout.astro";
           Trend: 287350000,
           "Trend MT": 277100000,
         },
-
         "The New CRETA": {
           "N Line Turbo": 522000000,
           "N Line": 474000000,
@@ -141,12 +134,10 @@ import Layout from "../layouts/Layout.astro";
           "Trend MT": 341600000,
           "Active MT": 308800000,
         },
-
         "STARGAZER X": {
           Prime: 359600000,
           Style: 348750000,
         },
-
         STARGAZER: {
           Prime: 332900000,
           "Essential IVT": 283000000,
@@ -154,7 +145,6 @@ import Layout from "../layouts/Layout.astro";
           "Active IVT": 272550000,
           "Active MT": 259200000,
         },
-
         "STARIA Diesel 2.2 CRDi": {
           "7 Seater": 1074400000,
           "9 Seater": 936700000,
@@ -164,8 +154,9 @@ import Layout from "../layouts/Layout.astro";
       const modelSelect = document.getElementById("model");
       const variantSelect = document.getElementById("variant");
       const form = document.getElementById("formSimulasi");
+      const dpInput = document.getElementById("dp");
 
-      // Isi Model
+      // Isi model
       Object.keys(cars).forEach((model) => {
         const option = document.createElement("option");
         option.value = model;
@@ -173,7 +164,7 @@ import Layout from "../layouts/Layout.astro";
         modelSelect.appendChild(option);
       });
 
-      // Saat Model Dipilih
+      // Saat model dipilih
       modelSelect.addEventListener("change", function () {
         variantSelect.innerHTML =
           '<option value="">Pilih Tipe / Varian</option>';
@@ -187,7 +178,7 @@ import Layout from "../layouts/Layout.astro";
 
         Object.keys(variants).forEach((variant) => {
           const option = document.createElement("option");
-          option.value = variants[variant]; // harga disimpan tapi tidak ditampilkan
+          option.value = variants[variant];
           option.textContent = variant;
           variantSelect.appendChild(option);
         });
@@ -195,7 +186,18 @@ import Layout from "../layouts/Layout.astro";
         variantSelect.classList.remove("hidden");
       });
 
-      // Submit ke WhatsApp
+      // Validasi realtime DP
+      dpInput.addEventListener("input", function () {
+        if (this.value < 15) {
+          this.setCustomValidity("DP minimal 15%");
+        } else if (this.value > 90) {
+          this.setCustomValidity("DP maksimal 90%");
+        } else {
+          this.setCustomValidity("");
+        }
+      });
+
+      // Submit
       form.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -203,7 +205,7 @@ import Layout from "../layouts/Layout.astro";
         const variant =
           variantSelect.options[variantSelect.selectedIndex]?.text;
         const price = Number(variantSelect.value);
-        const dpPercent = Number(document.getElementById("dp").value);
+        const dpPercent = Number(dpInput.value);
         const tenor = Number(document.getElementById("tenor").value);
         const nama = document.getElementById("nama").value.trim();
         const hp = document.getElementById("hp").value.trim();
@@ -212,17 +214,12 @@ import Layout from "../layouts/Layout.astro";
           !model ||
           !variant ||
           !price ||
-          !dpPercent ||
+          dpPercent < 15 ||
           !tenor ||
           !nama ||
           !hp
         ) {
-          alert("Lengkapi semua data dulu yaa");
-          return;
-        }
-
-        if (dpPercent < 20) {
-          alert("DP minimal 20%");
+          alert("Lengkapi semua data dengan benar ya 🙏");
           return;
         }
 
